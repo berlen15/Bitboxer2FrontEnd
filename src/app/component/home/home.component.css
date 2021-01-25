@@ -114,12 +114,17 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-
-input[type=text], input[type=password] {
+input[type=text], input[type=password]{
+  padding:5px 5px;
+  margin-left:20px;
+  background-color: #f6f6f6;
+  border:none;
+}
+.text-content{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
