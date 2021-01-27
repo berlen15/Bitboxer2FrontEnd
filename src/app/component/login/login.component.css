@@ -1,71 +1,202 @@
-/* Bordered form */
-form {
-    border: 3px solid #f1f1f1;
-  }
-  
-  /* Full-width inputs */
-  input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  /* Set a style for all buttons */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  /* Add a hover effect for buttons */
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Extra style for the cancel button (red) */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
-  
-  /* Center the avatar image inside this container */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-  }
-  
-  /* Avatar image */
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
-  
-  /* Add padding to containers */
-  .container {
-    padding: 16px;
-  }
-  
-  /* The "Forgot password" text */
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-    .cancelbtn {
-      width: 100%;
-    }
-  }
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Text Align */
+.text-c {
+  text-align: center;
+}
+.text-l {
+  text-align: left;
+}
+.text-r {
+  text-align: right
+}
+.text-j {
+  text-align: justify;
+}
+
+/* Text Color */
+.text-whitesmoke {
+  color: whitesmoke
+}
+.text-darkyellow {
+  color: rgba(148, 167, 203, 0.432)
+}
+
+/* Lines */
+
+.line-b {
+  border-bottom: 1px solid !important;
+}
+
+/* Buttons */
+.button {
+  border-radius: 3px;
+  font-size:16px;
+}
+.form-button {
+  background-color:#3264C2;
+  border-color: #1C4797;
+  color: #e6e6e6;
+  font-size:16px;
+}
+.form-button:hover,
+.form-button:focus,
+.form-button:active,
+.form-button.active,
+.form-button:active:focus,
+.form-button:active:hover,
+.form-button.active:hover,
+.form-button.active:focus {
+  background-color: yellow;
+  border-color: rgba(255, 235, 59, 0.473);
+  color: #3264C2;
+}
+.button-l {
+  width: 100% !important;
+}
+
+/* Margins g(global) - l(left) - r(right) - t(top) - b(bottom) */
+
+.margin-g {
+  margin: 15px;
+}
+.margin-g-sm {
+  margin: 10px;
+}
+.margin-g-md {
+  margin: 20px;
+}
+.margin-g-lg {
+  margin: 30px;
+}
+
+.margin-l {
+  margin-left: 15px;
+}
+.margin-l-sm {
+  margin-left: 10px;
+}
+.margin-l-md {
+  margin-left: 20px;
+}
+.margin-l-lg {
+  margin-left: 30px;
+}
+
+.margin-r {
+  margin-right: 15px;
+}
+.margin-r-sm {
+  margin-right: 10px;
+}
+.margin-r-md {
+  margin-right: 20px;
+}
+.margin-r-lg {
+  margin-right: 30px;
+}
+
+.margin-t {
+  margin-top: 15px;
+}
+.margin-t-sm {
+  margin-top: 10px;
+}
+.margin-t-md {
+  margin-top: 20px;
+}
+.margin-t-lg {
+  margin-top: 30px;
+}
+
+.margin-b {
+  margin-bottom: 15px;
+}
+.margin-b-sm {
+  margin-bottom: 10px;
+}
+.margin-b-md {
+  margin-bottom: 20px;
+}
+.margin-b-lg {
+  margin-bottom: 30px;
+}
+
+/* Bootstrap Form Control Extension */
+
+.form-control,
+.border-line {
+  background-color: #77A3F6;
+  background-image: none;
+  border: 3px solid white;
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+}
+.form-control:focus,
+.border-line:focus {
+  border-color:yellow;
+  background-color: #77A3F6;
+  color: #e6e6e6;
+}
+.form-control,
+.form-control:focus {
+  box-shadow: none;
+}
+.form-control::-webkit-input-placeholder { color: #BDBDBD; }
+
+/* Container */
+
+input[type="text"], input[type="password"]{
+  font-size: 20px;
+}
+.container-content {
+  background-color:transparent;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #FFEB3B;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+
+/* Backgrounds */
+
+.main-bg {
+
+  background: #424242;
+  background: linear-gradient( #2748C6, #7BA4F0);
+}
+
+/* Login & Register Pages*/
+
+.login-container {
+  max-width: 400px;
+  z-index: 100;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+.login.login-container {
+  width: 300px;
+}
+.wrapper.login-container {
+  margin-top: 140px;
+}
+.logo-badge {
+  color: #e6e6e6;
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -10px;
+  margin-bottom: 0;
+}

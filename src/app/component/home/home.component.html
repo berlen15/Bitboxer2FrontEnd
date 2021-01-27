@@ -1,24 +1,26 @@
-
-<!--<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <div class="fadeIn first">
-      <h3>SERVICIO DE AUTENTICACIÓN</h3>
-    </div>
-    <form>
-      <div class="text-content"><i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario"></div>
-      <div class="text-content"><i class="fas fa-lock"></i> <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña"></div>
-      <input type="submit" class="fadeIn fourth" value="Iniciar sesión">
-    </form>
-
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Olvidé mi contraseña</a>
-    </div>
-
-  </div>
-</div>
--->
+<!--<p>Bienvenid@ {{nombreusuario}}</p>
+<p>TU rol es {{usuario.rol.name}}</p>-->
 <div class="container">
   <header class="jumbotron">
-    <p>{{ content }}</p>
+      <div class="container">
+          <p>Lista rápida de artículos creados</p>            
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><h4>CODIGO</h4></th>
+                <th><h4>DESCRIPCION</h4></th>
+                <th><h4>PRECIO</h4></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let articulo of articulos">
+                <td><h4>{{articulo.codigoarticulo}}</h4></td>
+                <td><h4>{{articulo.descripcion}}</h4></td>
+                <td><h4>{{articulo.precio}} €</h4></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
   </header>
 </div>
