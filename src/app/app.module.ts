@@ -15,6 +15,11 @@ import { BasicAuthHttpInterceptorServiceService } from './services/basic-auth-ht
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { ProductsComponent } from './component/products/products.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { ProductDetailsComponent } from './component/product-details/product-details.component';
+
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -24,11 +29,15 @@ import { FooterComponent } from './component/footer/footer.component';
     AdminComponent,
     LoginComponent,
     ProductsComponent,
-    FooterComponent
+    FooterComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    MatTabsModule,
+    MatTableModule,
+    BrowserAnimationsModule,
     BrowserModule,
     NgbModule,
     HttpClientModule,

@@ -1,5 +1,21 @@
-button{
-    font-size: 14px;
-    color:white;
-    margin-left:15px;
-}
+.container {
+    padding: 2rem 0rem;
+  }
+  
+  h4 {
+    margin: 2rem 0rem 1rem;
+  }
+  
+  .table-image td, .table-image th{
+      vertical-align: middle;
+  }
+  button{
+      margin-left: 10px;
+  }
+  button a {      
+    color: white;
+    font-size:16px;
+  }
+  table{
+      font-size:16px;
+  }

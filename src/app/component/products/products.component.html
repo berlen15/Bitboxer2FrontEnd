@@ -1,34 +1,32 @@
-<div class="container">
-        <header class="jumbotron">
-            <div class="container">
-                <p>Lista de artículos creados</p>            
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th><h4>CÓDIGO</h4></th>
-                      <th><h4>DESCRIPCIÓN</h4></th>
-                      <th><h4>PRECIO</h4></th>
-                      <th><h4>ESTADO</h4></th>
-                      <th scope="row"><h4 class='text-center'>ACCIONES</h4></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let articulo of articulos">
-                      <td><h4>{{articulo.codigoarticulo}}</h4></td>
-                      <td><h4>{{articulo.descripcion}}</h4></td>
-                      <td><h4>{{articulo.precio}} €</h4></td>
-                      <td>
-                          <h4 *ngIf="articulo.estado==2">DESCATALOGADO</h4>
-                          <h4 *ngIf="articulo.estado==1">EN VENTA</h4>
-                        </td>
-                        <td colspan="15">
-                               <button class="bg-warning">EDITAR  <i class="fas fa-edit"></i></button>
-                               <button class="bg-info">VER DETALLES  <i class="fas fa-th-list"></i></button>
-                        </td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
-        </header>
+
+<div class="container jumbotron">
+    <button type="button" class="btn btn-success text-right"><a href='###'>Añadir artículo</a></button>
+    <div class="container">
+      <div class="col-12 table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">CÓDIGO</th>
+              <th scope="col">DESCRIPCIÓN</th>
+              <th scope="col">PRECIO</th>
+              <th scope="col">ESTADO</th>
+              <th scope="col">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let articulo of articulos">
+              <th scope="row">{{articulo.codigoarticulo}}</th>
+              <td>{{articulo.descripcion}}</td>
+              <td>{{articulo.precio}} €</td>
+              <td *ngIf="articulo.estado==2">DESCATALOGADO</td>
+              <td *ngIf="articulo.estado==1">EN VENTA</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="showDetailsProduct(articulo.codigoarticulo)">VER DETALLES <i class="far fa-eye"></i></button>
+                <button type="button" class="btn btn-warning">EDITAR <i class="fas fa-edit"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+  </div>

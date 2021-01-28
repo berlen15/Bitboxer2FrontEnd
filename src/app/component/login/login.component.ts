@@ -13,11 +13,13 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  home_url:string;
   roles: string[] = [];
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.home_url="/home"+this.nombreusuario;
     this.reloadPage();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProductsComponent implements OnInit {
   articulos;
   usuario;
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) { }
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(sessionStorage.usuario);
@@ -24,4 +24,9 @@ export class ProductsComponent implements OnInit {
       });
   }
 
+  showDetailsProduct(codigo){
+    console.log("el codigo es ", codigo);
+    this.route.navigateByUrl("/products/"+this.usuario.nombreusuario+"/"+codigo);
+    
+  }
 }
