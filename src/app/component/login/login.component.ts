@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+  nombreusuario: string;
+  contrasena: string;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.reloadPage();
+  }
+
+  login(): void {
+    this.authService.login(this.nombreusuario, this.contrasena).subscribe(
+      data => {
+        this.router.navigateByUrl('home/'+data.nombreusuario);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
+  reloadPage() {
+    // The last "domLoading" Time //
+    var currentDocumentTimestamp =
+    new Date(performance.timing.domLoading).getTime();
+    // Current Time //
+    var now = Date.now();
+    // Ten Seconds //
+    var tenSec = 10 * 1000;
+    // Plus Ten Seconds //
+    var plusTenSec = currentDocumentTimestamp + tenSec;
+    if (now > plusTenSec) {
+    window.location.reload();
+    } else {}
+    }
+}
