@@ -28,6 +28,8 @@ export class AuthService implements CanActivate{
         let tokenStr = userData.token;
         sessionStorage.setItem("token", tokenStr);
         headers.append('Authorization',tokenStr)
+        headers.append("Access-Control-Allow-Origin", "*");
+        headers.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-token");
         sessionStorage.setItem("usuario",  JSON.stringify(userData));
         return userData;
         })

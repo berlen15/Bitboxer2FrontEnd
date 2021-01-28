@@ -5,12 +5,12 @@
             </div>
                 <h3 class="text-whitesmoke">SERVICIO DE AUTENTICACIÓN</h3>
             <div class="container-content">
-                <form class="margin-t">
+                <form name="form1" #form="ngForm" class="margin-t">
                     <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]="nombreusuario" placeholder="Nombre de usuario" required="">
+                        <input type="text" class="form-control" [(ngModel)]="nombreusuario" placeholder="Nombre de usuario" required="" name="uname">
                     </div>
                     <div class="form-group">
-                        <input type="password" [(ngModel)]="contrasena" class="form-control" placeholder="*****" required="">
+                        <input type="password" [(ngModel)]="contrasena" class="form-control" placeholder="*****" required="" name="psw">
                     </div>
                     <button type="submit" class="form-button button-l margin-b" (click)="login()">Iniciar sesión</button>
     

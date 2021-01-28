@@ -13,6 +13,8 @@ import { LoginComponent } from './component/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthHttpInterceptorServiceService } from './services/basic-auth-http-interceptor-service.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { ProductsComponent } from './component/products/products.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     HomeComponent,
     NavbarComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

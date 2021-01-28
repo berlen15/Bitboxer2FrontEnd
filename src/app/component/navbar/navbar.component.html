@@ -1,13 +1,13 @@
 <!-- A grey horizontal navbar that becomes vertical on small screens -->
 <nav class="navbar navbar-expand-sm">
-  <a href="##">
+  <a [href]=home_url>
     <img src="https://logos-marcas.com/wp-content/uploads/2020/09/IKEA-Logo.png" height="50" width="100">
   </a>
   <!-- Links -->
   <ul class="navbar-nav" *ngIf="rol=='USER'">
     <li><a class="nav-link" href="#">BIENVENID@ {{nombreusuario}}</a></li>
       <li class="nav-item">
-          <a class="nav-link" href="#">MIS PRODUCTOS</a>
+          <a class="nav-link" [href]=products_url>MIS ARTÍCULOS</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">MIS DATOS</a>
