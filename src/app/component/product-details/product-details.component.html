@@ -1,4 +1,29 @@
+<div class="container">
 
+        <!-- Portfolio Item Heading -->
+        <h1 class="my-4">INFORMACIÓN DEL ARTÍCULO</h1>
+      
+        <!-- Portfolio Item Row -->
+        <div class="row">
+      
+          <div class="col-md-8">
+            <img class="img-fluid" src="https://cdn2.iconfinder.com/data/icons/packing/80/shipping-34-512.png" alt="" width="400" height="50">
+          </div>
+      
+          <div class="col-md-4">
+            <h3 class="my-3">DESCRIPCIÓN DEL ARTÍCULO</h3>
+            <p>{{articulo.descripcion}}</p>
+            <h3 class="my-3">DETALLES DEL ARTÍCULO</h3>
+            <ul>
+              <li>CÓDGIO: {{articulo.codigoaarticulo}}</li>
+              <li *ngIf="articulo.estado==1">ESTADO: EN VENTA</li>
+              <li *ngIf="articulo.estado==2">ESTADO: DESCATALOGADO</li>
+              <li>PRECIO: {{articulo.precio}} €</li>
+            </ul>
+          </div>
+      
+        </div>
+</div>
 <mat-tab-group>
         <mat-tab label="Proveedores">
             <div class="container" >
