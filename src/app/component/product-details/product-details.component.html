@@ -7,24 +7,23 @@
         <div class="row">
       
           <div class="col-md-8">
-            <img class="img-fluid" src="https://cdn2.iconfinder.com/data/icons/packing/80/shipping-34-512.png" alt="" width="400" height="50">
+             <h2>DESCRIPCIÓN DEL ARTÍCULO</h2>
+            <p>{{articulo.descripcion}}</p>
           </div>
       
-          <div class="col-md-4">
-            <h3 class="my-3">DESCRIPCIÓN DEL ARTÍCULO</h3>
-            <p>{{articulo.descripcion}}</p>
-            <h3 class="my-3">DETALLES DEL ARTÍCULO</h3>
+          <div class="col-md-8">           
+            <h2 class="my-3">DETALLES DEL ARTÍCULO</h2>
             <ul>
-              <li>CÓDGIO: {{articulo.codigoaarticulo}}</li>
-              <li *ngIf="articulo.estado==1">ESTADO: EN VENTA</li>
-              <li *ngIf="articulo.estado==2">ESTADO: DESCATALOGADO</li>
-              <li>PRECIO: {{articulo.precio}} €</li>
+              <li><p>CÓDGIO: {{articulo.codigoarticulo}}</p></li>
+              <li *ngIf="articulo.estado==1"><p>ESTADO: EN VENTA</p></li>
+              <li *ngIf="articulo.estado==2"><p>ESTADO: DESCATALOGADO</p></li>
+              <li><p>PRECIO: {{articulo.precio}} €</p></li>
             </ul>
           </div>
       
         </div>
 </div>
-<mat-tab-group>
+<mat-tab-group mat-align-tabs="center">
         <mat-tab label="Proveedores">
             <div class="container" >
                 <div class="container">

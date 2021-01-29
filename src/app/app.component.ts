@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './services/token-storage.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +15,14 @@ export class AppComponent {
   showUserBoard = false;
   nombreusuario?: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private jwtHelper: JwtHelperService, private router: Router) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if(this.jwtHelper.isTokenExpired(sessionStorage.getItem("token"))){
+      sessionStorage.clear();
+      this.router.navigateByUrl("/login");
+    }
+    /*this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
       this.reloadPage();
@@ -27,13 +33,13 @@ export class AppComponent {
       this.showUserBoard = this.roles.includes('ROLE_USER');
 
       this.nombreusuario = user.nombreusuario;
-    }
+    }*/
   }
 
-  logout(): void {
+  /*logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
-  }
+  }*/
   reloadPage() {
     // The last "domLoading" Time //
     var currentDocumentTimestamp =
