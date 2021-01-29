@@ -19,7 +19,9 @@ import { ProductDetailsComponent } from './component/product-details/product-det
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
+import { AddProductComponent } from './component/add-product/add-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,13 @@ import { MatTableModule } from '@angular/material/table'
     LoginComponent,
     ProductsComponent,
     FooterComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     MatTabsModule,
     MatTableModule,
     BrowserAnimationsModule,

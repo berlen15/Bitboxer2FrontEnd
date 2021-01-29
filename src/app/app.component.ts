@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './services/token-storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,12 @@ export class AppComponent {
   showUserBoard = false;
   nombreusuario?: string;
 
-  constructor(private jwtHelper: JwtHelperService, private router: Router) { }
+  constructor(private jwtHelper: JwtHelperService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.reloadPage();
+  });
     if(this.jwtHelper.isTokenExpired(sessionStorage.getItem("token"))){
       sessionStorage.clear();
       this.router.navigateByUrl("/login");

@@ -10,9 +10,10 @@ import { UserService } from 'src/app/services/user.service';
 export class ProductsComponent implements OnInit {
   articulos;
   usuario;
+  add_url: string;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.usuario = JSON.parse(sessionStorage.usuario);
     this.userService.getMyArticles(this.usuario.nombreusuario).subscribe(
       data => {       
@@ -22,11 +23,14 @@ export class ProductsComponent implements OnInit {
       err => {
         this.articulos = JSON.parse(err.error).message;
       });
+      this.add_url="products/"+this.usuario.nombreusuario+"/add";
   }
 
   showDetailsProduct(codigo){
     console.log("el codigo es ", codigo);
-    this.route.navigateByUrl("/products/"+this.usuario.nombreusuario+"/"+codigo);
-    
+    this.route.navigateByUrl("products/"+this.usuario.nombreusuario+"/"+codigo);
   }
+  /*addProduct(){
+    this.route.navigateByUrl(this.add_url);
+  }*/
 }

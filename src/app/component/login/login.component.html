@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <body class="main-bg">
     <div class="login-container text-c animated flipInX">
             <div>
@@ -13,7 +14,9 @@
                         <input type="password" [(ngModel)]="contrasena" class="form-control" placeholder="*****" required="" name="psw">
                     </div>
                     <button type="submit" class="form-button button-l margin-b" (click)="login()">Iniciar sesión</button>
-    
+                    
+                    <div *ngIf="isLoginFailed==true" class="bg-danger"><h4>Usuario o contraseña incorrectos</h4></div>
+
                     <a class="text-darkyellow" href="#"><small>Olvidé mi contraseña</small></a>
                 </form>
                 <p class="margin-t text-whitesmoke"><small> Bitbox IKEA &copy; 2021</small> </p>

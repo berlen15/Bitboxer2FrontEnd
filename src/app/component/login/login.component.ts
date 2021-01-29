@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   nombreusuario: string;
   contrasena: string;
-  isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   home_url:string;
   roles: string[] = [];
+
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -27,9 +27,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.nombreusuario, this.contrasena).subscribe(
       data => {
         this.router.navigateByUrl('home/'+data.nombreusuario);
+        this.ngOnInit();
       },
       err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = "Usuario o contraseña incorrectos";
         this.isLoginFailed = true;
       }
     );
