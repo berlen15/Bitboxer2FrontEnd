@@ -21,7 +21,7 @@ export class ArticlesService {
       });      
   }
 
-  addArticle(/*articulo*/ codigo, descripcion, precio, estado, creador){
+  addArticle(articulo){
     console.log("en el service creando art")
     /*this.http.post("http://localhost:8080/articulos",{articulo,
       headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token')})
@@ -29,7 +29,7 @@ export class ArticlesService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', sessionStorage.getItem('token'));
-    return this.http.post('http://localhost:8080/articulos', {codigo,descripcion,precio,estado,creador}, {headers : headers})
+    return this.http.post('http://localhost:8080/articulos', articulo, {headers : headers})
       .subscribe(res => {
          console.log(res);//only objects
       })

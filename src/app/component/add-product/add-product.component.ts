@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit {
       estado: 1,
       creador: creador
     };
-    this.articleService.addArticle(/*articulo*/ +this.codigoarticulo, +this.descripcion, +this.precio, 1, +creador);
+    this.articleService.addArticle(articulo);
   }
 
   validateCode(){
