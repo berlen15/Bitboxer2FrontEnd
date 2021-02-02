@@ -28,5 +28,11 @@ export class ArticlesService {
     }).subscribe(data => console.log("data= ", data));
   }
   
+  updateArticle(codigo: number, nombre: string, articulo: Articulo){
+    console.log("codigo ",codigo, " nombreusuario ", nombre, " articulo: ", articulo);
+    this.http.put("http://localhost:8080/"+nombre+"/articulos/"+codigo, articulo, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'text/plain'}),
+    }).subscribe(data => console.log("data= ", data));
+  }
   
 }

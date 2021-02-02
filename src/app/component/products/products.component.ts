@@ -30,6 +30,9 @@ export class ProductsComponent implements OnInit {
     console.log("el codigo es ", codigo);
     this.route.navigateByUrl("products/"+this.usuario.nombreusuario+"/"+codigo);
   }
+  editProduct(codigo){
+    this.route.navigateByUrl("products/"+this.usuario.nombreusuario+"/"+codigo+"/edit")
+  }
   /*addProduct(){
     this.route.navigateByUrl(this.add_url);
   }*/

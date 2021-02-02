@@ -1,0 +1,13 @@
+mat-select{
+    height: 10px;
+}
+input[type="number"]{
+    height: 38px;
+}
+.error-msg{
+    margin-top:20px;
+    border-radius: 25px;
+    background-color:red;
+    font-size: 15px;
+    color:white;
+}
