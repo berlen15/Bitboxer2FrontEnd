@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { Articulo } from 'src/app/model/ArticuloModel';
 import { Usuario } from 'src/app/model/UsuarioModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -14,7 +15,7 @@ export class AddProductComponent implements OnInit {
   precio;
 
   validCode;
-  constructor(private articleService: ArticlesService) { }
+  constructor(private articleService: ArticlesService, private router: Router) { }
 
   ngOnInit(): void {
     this.validateCode();
@@ -25,13 +26,14 @@ export class AddProductComponent implements OnInit {
       idusuario: +sessionStorage.getItem("idusuario")
     }
     var articulo: Articulo = {
-      codigoarticulo: +this.codigoarticulo,
+      codigoarticulo: Number(this.codigoarticulo),
       descripcion: this.descripcion,
-      precio: +this.precio,
+      precio: this.precio,
       estado: 1,
       creador: creador
     };
     this.articleService.addArticle(articulo);
+    this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
   }
 
   validateCode(){
