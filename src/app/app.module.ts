@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateProductComponent } from './component/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     FooterComponent,
     ProductDetailsComponent,
-    AddProductComponent
+    AddProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
