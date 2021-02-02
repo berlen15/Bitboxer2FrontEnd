@@ -21,21 +21,24 @@ export class HomeComponent implements OnInit {
     this.usuario = JSON.parse(sessionStorage.usuario);
     sessionStorage.setItem("rol", this.usuario.rol.name);
     this.nombreusuario = this.activatedRoute.snapshot.params.nombreusuario;
-    this.userService.getArticles().subscribe(
-      data => {       
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    if(this.nombreusuario==null){
+      this.userService.getArticles().subscribe(
+        data => {       
+          this.articulos = data;
+        },
+        err => {
+          this.articulos = JSON.parse(err.error).message;
+        }
+      );
+    }
+    
     this.userService.getMyArticles(this.usuario.nombreusuario).subscribe(
       data => {       
         this.articulos = data;
         console.log(this.articulos);
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        this.articulos = JSON.parse(err.error).message;
       });
   }
 

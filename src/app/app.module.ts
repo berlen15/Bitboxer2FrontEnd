@@ -13,6 +13,15 @@ import { LoginComponent } from './component/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthHttpInterceptorServiceService } from './services/basic-auth-http-interceptor-service.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { ProductsComponent } from './component/products/products.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { ProductDetailsComponent } from './component/product-details/product-details.component';
+
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { AddProductComponent } from './component/add-product/add-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,11 +29,19 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     HomeComponent,
     NavbarComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsComponent,
+    FooterComponent,
+    ProductDetailsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatTableModule,
+    BrowserAnimationsModule,
     BrowserModule,
     NgbModule,
     HttpClientModule,

@@ -1,31 +1,39 @@
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-sm">
-  <a href="##">
-    <img src="https://logos-marcas.com/wp-content/uploads/2020/09/IKEA-Logo.png" height="50" width="100">
-  </a>
-  <!-- Links -->
-  <ul class="navbar-nav" *ngIf="rol=='USER'">
-    <li><a class="nav-link" href="#">BIENVENID@ {{nombreusuario}}</a></li>
-      <li class="nav-item">
-          <a class="nav-link" href="#">MIS PRODUCTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">MIS DATOS</a>
-          </li>
-  </ul>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item ml-auto">
-      <a class="nav-link" href="#">HELP <i class="fas fa-info-circle"></i></a>
-    </li>
-    <li class="nav-item ml-auto">
-      <a class="nav-link" href="#"></a>
-    </li>
-    <li class="nav-item" *ngIf="rol==null">
-      <a class="nav-link" href="/login" router-link='login'><i class="fas fa-user"></i></a>
-    </li>
-    <li class="nav-item" *ngIf="rol!=null">
-        <a class="nav-link" href="##" (click)="logout()"><i class="fas fa-sign-out-alt"></i></a>
-      </li>
-  </ul>
+<nav class="navbar navbar-expand-sm navbar-light">
+    <a [href]=home_url>
+        <img src="https://logos-marcas.com/wp-content/uploads/2020/09/IKEA-Logo.png" height="50" width="100">
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav" *ngIf="rol=='USER'">
+          <li><a class="nav-link" href="#">BIENVENID@ {{nombreusuario}}</a></li>
+            <li class="nav-item">
+                <a class="nav-link" [href]=products_url>MIS ARTÍCULOS</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">MIS DATOS</a>
+                </li>
+      </ul>
 
-</nav>
+      <div *ngIf="rol==null">
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar artículos..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">HELP <i class="fas fa-info-circle"></i></a>
+        </li>
+        <li class="nav-item" *ngIf="rol==null">
+            <a class="nav-link" href="/login" router-link='login'><i class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item" *ngIf="rol!=null">
+              <a class="nav-link" href="/login" (click)="logout()"><i class="fas fa-sign-out-alt"></i></a>
+            </li>
+      </ul>
+      
+    </div>
+  </nav>

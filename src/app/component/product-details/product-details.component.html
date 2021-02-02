@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<div class="container">
+        <!-- Portfolio Item Heading -->
+        <h1 class="my-4">INFORMACIÓN DEL ARTÍCULO</h1>
+      
+        <!-- Portfolio Item Row -->
+        <div class="row">
+      
+          <div class="col-md-8">
+             <h2>DESCRIPCIÓN DEL ARTÍCULO</h2>
+            <p>{{articulo.descripcion}}</p>
+          </div>
+      
+          <div class="col-md-8">           
+            <h2 class="my-3">DETALLES DEL ARTÍCULO</h2>
+            <ul>
+              <li><p>CÓDGIO: {{articulo.codigoarticulo}}</p></li>
+              <li *ngIf="articulo.estado==1"><p>ESTADO: EN VENTA</p></li>
+              <li *ngIf="articulo.estado==2"><p>ESTADO: DESCATALOGADO</p></li>
+              <li><p>PRECIO: {{articulo.precio}} €</p></li>
+            </ul>
+          </div>
+      
+        </div>
+</div>
+<mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Proveedores">
+            <div class="container" >
+                <div class="container">
+                    <div class="col-12 table-responsive">
+                        <h4 *ngIf="proveedores==null">ESTE ARTÍCULO AÚN NO TIENE PROVEEDORES ASOCIADOS</h4>
+                        <table class="table" *ngIf="proveedores!=null">
+                            <thead>
+                                <tr>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">PAÍS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let prov of proveedores">
+                                <td>{{prov.nombre}}</td>
+                                <td>{{prov.pais}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>   
+                </div>
+            </div> 
+        </mat-tab>
+        <mat-tab label="Reducciones">
+            <div class="container">
+                <div class="container">
+                    <div class="col-12 table-responsive">
+                            <h4 *ngIf="reducciones==null">ESTE ARTÍCULO AÚN NO TIENE REDUCCIONES ASOCIADAS</h4>
+                        <table class="table" *ngIf="reducciones!=null">
+                            <thead>
+                                <tr>
+                                <th scope="col">CÓDIGO</th>
+                                <th scope="col">DESCUENTO</th>                    
+                                <th scope="col">FECHA CREACIÓN</th>
+                                <th scope="col">FECHA INICIO</th>
+                                <th scope="col">FECHA FIN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let red of reducciones">
+                                <td>{{red.codigoreduccion}}</td>
+                                <td>{{red.cantidad*100}} %</td>
+                                <td>{{red.creacion}}</td>
+                                <td>{{red.inicio}}</td>
+                                <td>{{red.fin}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>    
+        </mat-tab>
+</mat-tab-group>

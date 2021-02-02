@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="form_add_user">
+        <h2 class="text-center">AÑADIR ARTÍCULO</h2>
+        <div class="vertical-separator">  </div>
+        <h4 class="text-center"> Campos obligatorios: Los campos señalados con asterisco (*) son obligatorios</h4>
+        <div class="vertical-separator">  </div>
+        <form method="POST" action = "" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+            <label for="Nombre"><b>* Código del artículo (numérico)</b></label>
+            <input type="number" [(ngModel)]="codigoarticulo" class="form-control" name="codigoarticulo" id="codigoarticulo" value="" required (keyup)="validateCode()">
+            <div *ngIf="validCode==false">El código seleccionado no está disponible o está vacío</div>
+            </div>
+            <div class="form-group col-md-6">
+            <label for="Tipo"><b>Estado</b></label>
+            <input type="text" class="form-control" name="type" placeholder="En venta" id="type" value="" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Descripcion"><b>* Descripción</b></label>
+            <input type="text" class="form-control" name="descripcion" placeholder="Descripcion..." id="descripcion" [(ngModel)]="descripcion">
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="10" 
+                            cols="40" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="Precio"><b>Precio</b></label>
+            <input type="number" [(ngModel)]="precio" class="form-control" name="precio" id="precio" value="" min="0" step="any">
+          </div>
+          
+          <div class="container">
+              <div class="row">
+                <div class="col text-center" *ngIf="validCode===false">                    
+                  <button type="submit" name="store-activity" class="btn btn-primary" disabled>Guardar</button>
+                </div>
+                <div class="col text-center" *ngIf="validCode==true">                    
+                    <button type="submit" name="store-activity" class="btn btn-primary" (click)="saveArticle()">Guardar</button>
+                </div>
+              </div>
+          </div>
+        </form>
+
+    </div>
+</div>
