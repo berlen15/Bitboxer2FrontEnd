@@ -25,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductComponent } from './component/update-product/update-product.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
+import { AsociateSupplierComponent } from './component/asociate-supplier/asociate-supplier.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatSelectModule} from '@angular/material/select';
     FooterComponent,
     ProductDetailsComponent,
     AddProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    AsociateSupplierComponent
   ],
   imports: [
     BrowserModule,
