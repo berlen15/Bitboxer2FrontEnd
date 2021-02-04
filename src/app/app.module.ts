@@ -26,6 +26,13 @@ import { UpdateProductComponent } from './component/update-product/update-produc
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
 import { AsociateSupplierComponent } from './component/asociate-supplier/asociate-supplier.component';
+import { AddReductionComponent } from './component/add-reduction/add-reduction.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +46,9 @@ import { AsociateSupplierComponent } from './component/asociate-supplier/asociat
     ProductDetailsComponent,
     AddProductComponent,
     UpdateProductComponent,
-    AsociateSupplierComponent
+    AsociateSupplierComponent,
+    AddReductionComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +57,10 @@ import { AsociateSupplierComponent } from './component/asociate-supplier/asociat
     MatTabsModule,
     MatTableModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
     BrowserModule,
     NgbModule,
@@ -57,7 +70,8 @@ import { AsociateSupplierComponent } from './component/asociate-supplier/asociat
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorServiceService, multi:true},
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
-    JwtHelperService
+    JwtHelperService,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],

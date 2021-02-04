@@ -9,6 +9,8 @@ import { ProductDetailsComponent } from './component/product-details/product-det
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { UpdateProductComponent } from './component/update-product/update-product.component';
 import { AsociateSupplierComponent } from './component/asociate-supplier/asociate-supplier.component';
+import { AddReductionComponent } from './component/add-reduction/add-reduction.component';
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard]},
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'products/:nombreusuario/:codigo', component: ProductDetailsComponent }, 
   { path: 'products/:nombreusuario/:codigo/edit', component: UpdateProductComponent },
   { path: 'products/:nombreusuario/:codigo/suppliers', component: AsociateSupplierComponent },
+  { path: 'products/:nombreusuario/:codigo/reduction', component: AddReductionComponent },
+  { path: 'profile/:nombreusuario', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }

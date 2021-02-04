@@ -12,6 +12,7 @@ rol;
 nombreusuario;
 home_url;
 products_url;
+profile_url;
   constructor(private authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
@@ -20,10 +21,10 @@ products_url;
     if(sessionStorage.getItem("usuario")!=null){
       this.nombreusuario=JSON.parse(sessionStorage.usuario).nombreusuario;
     }
-    
+
     this.home_url="/home/"+this.nombreusuario;
     this.products_url="/products/"+this.nombreusuario;
-    
+    this.profile_url="profile/"+this.nombreusuario;
   }
   logout(){
     this.authService.logOut();

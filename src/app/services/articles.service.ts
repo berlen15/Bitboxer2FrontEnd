@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Articulo } from '../model/ArticuloModel';
 import { Proveedor } from '../model/ProveedorModel';
+import { Reduccion } from '../model/ReduccionModel';
 
 
 @Injectable({
@@ -41,8 +42,12 @@ export class ArticlesService {
     console.log("Codigoarticulo ",codigoarticulo);
     this.http.post("http://localhost:8080/articulos/"+codigoarticulo+"/proveedores", nombreproveedor, 
     {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'application/json', 'Content-Type':'application/json'}),
-    }).subscribe(data => console.log("data= ", data));
-  
+    }).subscribe(data => console.log("data= ", data));  
   }
   
+  addReduction(codigoarticulo, nombreusuario, reduccion:Reduccion){
+    this.http.post("http://localhost:8080/"+nombreusuario+"/articulos/"+codigoarticulo+"/reducciones", reduccion, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'application/json'}),'responseType':'text'
+    }).subscribe(data => console.log("data = ", data));  
+  }
 }
