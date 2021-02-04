@@ -23,7 +23,8 @@
               <td *ngIf="articulo.estado==1">EN VENTA</td>
               <td>
                 <button type="button" class="btn btn-primary" (click)="showDetailsProduct(articulo.codigoarticulo)">VER DETALLES <i class="far fa-eye"></i></button>
-                <button type="button" class="btn btn-warning">EDITAR <i class="fas fa-edit"></i></button>
+                <button *ngIf="articulo.estado==1" type="button" class="btn btn-warning" (click)="editProduct(articulo.codigoarticulo)">EDITAR <i class="fas fa-edit"></i></button>
+                <button *ngIf="articulo.estado==2" type="button" class="btn btn-warning" disabled>PRODUCTO DESCATALOGADO <i class="fas fa-ban"></i></button>
               </td>
             </tr>
           </tbody>

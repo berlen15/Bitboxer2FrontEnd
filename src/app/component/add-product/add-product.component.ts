@@ -21,7 +21,6 @@ export class AddProductComponent implements OnInit {
     this.validateCode();
   }
   saveArticle(){
-    console.log("dentro del save art");
     var creador : Usuario = {
       idusuario: +sessionStorage.getItem("idusuario")
     }

@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="form_add_user">
+        <h2 class="text-center">MODIFICAR ARTÍCULO</h2>
+        <div class="vertical-separator">  </div>
+        <h4 class="text-center"> Campos obligatorios: Los campos señalados con asterisco (*) son obligatorios</h4>
+        <div class="vertical-separator">  </div>
+        <form method="POST" action = "" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+            <label for="Nombre"><b>* Código del artículo (numérico)</b></label>
+            <input type="number" class="form-control" name="codigoarticulo" id="codigoarticulo" value="" placeholder={{codigoarticulo}} disabled>
+           
+            </div>
+            <div class="form-group col-md-6">
+            <label for="Tipo"><b>Estado</b></label>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>* Estado</mat-label>
+                <mat-select [(ngModel)]="estado" name="estado">
+                    <!--<mat-option *ngFor="let e of estados_disponibles" [value]="e.estado_number" [(value)]="estado">
+                    {{e.estado_string}}
+                    </mat-option>-->
+                    <mat-option [value]="1">EN VENTA</mat-option>
+                    <mat-option [value]="2">DESCATALOGADO</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Descripcion"><b>* Descripción</b></label>
+                        <textarea [(ngModel)]="descripcion" class="form-control" id="descripcion" name="descripcion" rows="10" 
+                            cols="40" required>{{descripcion}}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="Precio"><b>* Precio</b></label>
+            <input type="number" [(ngModel)]="precio" class="form-control" name="precio" id="precio" value="" min="0" step="any" value="{{precio}}">
+          </div>
+          
+            <div class="container">                
+                <div class="row">                                     
+                    <button type="submit" name="store-activity" class="btn btn-primary" (click)="updateArticle()">Guardar</button>
+                </div> 
+                      
+            </div>            
+            <div class="error-msg col text-center" *ngIf="valid===false">Compruebe los campos</div>
+            <div class="container">                
+                <div class="col">      
+                    <hr>
+                    <h4>OTRAS ACCIONES</h4>
+                    <button type="submit" name="store-activity" class="btn btn-success">Asociar proveedor</button>
+                    <button type="submit" name="store-activity" class="btn btn-warning">Añadir reduccion</button>
+                </div>
+                    
+                          
+            </div>
+            
+        </form>
+
+    </div>
+</div>

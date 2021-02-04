@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateProductComponent } from './component/update-product/update-product.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     FooterComponent,
     ProductDetailsComponent,
-    AddProductComponent
+    AddProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatTabsModule,
     MatTableModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     BrowserModule,
     NgbModule,
@@ -52,6 +57,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
