@@ -11,8 +11,10 @@ import { UpdateProductComponent } from './component/update-product/update-produc
 import { AsociateSupplierComponent } from './component/asociate-supplier/asociate-supplier.component';
 import { AddReductionComponent } from './component/add-reduction/add-reduction.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { UserListComponent } from './component/user-list/user-list.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard]},
   { path: 'products/:nombreusuario', component: ProductsComponent},
   { path: 'products/:nombreusuario/add', component: AddProductComponent},
@@ -21,9 +23,10 @@ const routes: Routes = [
   { path: 'products/:nombreusuario/:codigo/suppliers', component: AsociateSupplierComponent },
   { path: 'products/:nombreusuario/:codigo/reduction', component: AddReductionComponent },
   { path: 'profile/:nombreusuario', component: UserProfileComponent },
+  { path: 'users', component: UserListComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'admin', component: AdminComponent }
+  
 ];
 
 @NgModule({

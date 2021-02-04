@@ -20,13 +20,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.home_url="/home"+this.nombreusuario;
-    this.reloadPage();
+   // this.reloadPage();
   }
 
   login(): void {
     this.authService.login(this.nombreusuario, this.contrasena).subscribe(
       data => {
-        this.router.navigateByUrl('home/'+data.nombreusuario);
+        this.router.navigate(['home/',data.nombreusuario]);
         this.ngOnInit();
       },
       err => {

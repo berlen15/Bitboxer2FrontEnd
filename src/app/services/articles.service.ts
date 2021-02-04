@@ -15,6 +15,10 @@ export class ArticlesService {
 
   constructor(private http: HttpClient,public jwtHelper: JwtHelperService, public router: Router) { }
 
+  getArticles(){
+    return this.http.get('http://localhost:8080/articulos');
+  }
+
   getArticleByCode(codigo: string) {
     let headers = new Headers({'Content-Type': 'application/json'});  
     return this.http.get("http://localhost:8080/articulos/"+codigo, {

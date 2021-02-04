@@ -13,6 +13,10 @@ nombreusuario;
 home_url;
 products_url;
 profile_url;
+users_url;
+products_admin_url;
+suppliers_url;
+all_products_url;
   constructor(private authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
@@ -25,6 +29,8 @@ profile_url;
     this.home_url="/home/"+this.nombreusuario;
     this.products_url="/products/"+this.nombreusuario;
     this.profile_url="profile/"+this.nombreusuario;
+    this.all_products_url="product"
+    this.users_url="users";
   }
   logout(){
     this.authService.logOut();

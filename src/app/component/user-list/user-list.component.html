@@ -1,0 +1,35 @@
+
+<app-navbar></app-navbar>
+<div class="container jumbotron">
+    <button type="button" class="btn btn-success text-right"><a [href]="add_url">Añadir usuario</a></button>
+    <div class="container">
+      <div class="col-12 table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">NOMBRE USUARIO</th>
+              <th scope="col">ROL</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">APELLIDOS</th>
+              <th scope="col">CIUDAD</th>
+              <th scope="col">TELEFONO</th>             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <th scope="row">{{usuario.nombreusuario}}</th>
+              <td>{{usuario.rol.name}}</td>
+              <td>{{usuario.nombre}}</td>
+              <td>{{usuario.apellidos}}</td>
+              <td>{{usuario.ciudad}}</td>
+              <td>{{usuario.telefono}}</td>
+              <td>
+                <button type="button" class="btn btn-danger">ELIMINAR <i class="fas fa-user-minus"></i></button>
+                <button type="button" class="btn btn-warning">EDITAR <i class="fas fa-edit"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
