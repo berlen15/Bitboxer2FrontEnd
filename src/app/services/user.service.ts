@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UsuarioNuevo } from '../model/newUserModel';
 
 const API_URL = 'http://localhost:8080/';
 
@@ -18,11 +19,10 @@ export class UserService {
       )})
   }
   getUserByAdmin(nombreusuario: string): Observable<any>{
-    return this.http.get(API_URL+'usuarios/'+nombreusuario, {responseType: 'text'});
-  }
-
-  getArticles(){
-    return this.http.get(API_URL+'articulos', {responseType: 'text'});
+    return this.http.get(API_URL+'usuarios/'+nombreusuario, {
+      headers: new HttpHeaders(
+        {'Authorization': sessionStorage.getItem('token')}
+      )})
   }
 
   getUserByUser(nombreusuario: string): Observable<any>{
@@ -40,6 +40,12 @@ export class UserService {
           {'Authorization': sessionStorage.getItem('token')}
         )
       });
+  }
+
+  addUser(usuario: UsuarioNuevo){
+    this.http.post("http://localhost:8080/usuarios", usuario, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'text/plain'}),
+    }).subscribe(data => console.log("data= ", data));
   }
 
 }

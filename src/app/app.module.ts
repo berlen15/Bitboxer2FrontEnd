@@ -33,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { AddUserComponent } from './component/add-user/add-user.component';
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import { UserListComponent } from './component/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +51,14 @@ import { AddUserComponent } from './component/add-user/add-user.component';
     AsociateSupplierComponent,
     AddReductionComponent,
     UserProfileComponent,
-    AddUserComponent
+    AddUserComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MatGridListModule,
     MatTabsModule,
     MatTableModule,
     MatSelectModule,
