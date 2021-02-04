@@ -71,6 +71,6 @@ export class UpdateProductComponent implements OnInit {
     this.router.navigateByUrl("products/"+sessionStorage.getItem("nombreusuario")+"/"+this.codigoarticulo+"/suppliers")
   }
   AddReduction(){
-
+    this.router.navigateByUrl("products/"+sessionStorage.getItem("nombreusuario")+"/"+this.codigoarticulo+"/reduction")
   }
 }

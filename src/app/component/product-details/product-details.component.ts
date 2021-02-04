@@ -25,17 +25,8 @@ export class ProductDetailsComponent implements OnInit {
     this.articleService.getArticleByCode(this.codigoarticulo).subscribe(
       data => {
         this.articulo=data;
-        if(Object.entries(this.articulo.proveedor).length!==0){
-          this.proveedores=this.articulo.proveedor;
-        }else{
-          this.proveedores=null;
-        }
-        if(Object.entries(this.articulo.proveedor).length!==0){
-          this.reducciones = this.articulo.reducciones;
-        }else{
-          this.reducciones=null;
-        }
-        
+        this.proveedores=this.articulo.proveedor;
+        this.reducciones = this.articulo.reducciones;        
       }
     )
   }
