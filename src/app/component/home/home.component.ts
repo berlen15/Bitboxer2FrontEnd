@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   nombreusuario: string;
   usuario;
   articulos;
+  usuarios: Array<Object>;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {    
@@ -21,25 +22,19 @@ export class HomeComponent implements OnInit {
     this.usuario = JSON.parse(sessionStorage.usuario);
     sessionStorage.setItem("rol", this.usuario.rol.name);
     this.nombreusuario = this.activatedRoute.snapshot.params.nombreusuario;
-    if(this.nombreusuario==null){
-      this.userService.getArticles().subscribe(
+    if(this.usuario.rol.name=='USER'){
+      this.userService.getMyArticles(this.usuario.nombreusuario).subscribe(
         data => {       
           this.articulos = data;
+          console.log(this.articulos);
         },
         err => {
           this.articulos = JSON.parse(err.error).message;
-        }
-      );
+      });
+    }else if(this.usuario.rol.name=='ADMIN'){
+      this.userService.getAllUsers().subscribe(data=>this.usuarios=data);
     }
     
-    this.userService.getMyArticles(this.usuario.nombreusuario).subscribe(
-      data => {       
-        this.articulos = data;
-        console.log(this.articulos);
-      },
-      err => {
-        this.articulos = JSON.parse(err.error).message;
-      });
   }
 
   reloadPage() {

@@ -12,9 +12,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<any>{
-    return this.http.get(API_URL+'usuarios', {responseType: 'text'});
+    return this.http.get(API_URL+'usuarios', {
+      headers: new HttpHeaders(
+        {'Authorization': sessionStorage.getItem('token')}
+      )})
   }
-
   getUserByAdmin(nombreusuario: string): Observable<any>{
     return this.http.get(API_URL+'usuarios/'+nombreusuario, {responseType: 'text'});
   }

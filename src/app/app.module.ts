@@ -32,6 +32,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { AddUserComponent } from './component/add-user/add-user.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
     UpdateProductComponent,
     AsociateSupplierComponent,
     AddReductionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
