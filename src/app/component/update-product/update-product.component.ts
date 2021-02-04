@@ -65,6 +65,12 @@ export class UpdateProductComponent implements OnInit {
     console.log("nombreusuario ",sessionStorage.getItem("nombreusuario"));
     this.articleService.updateArticle(this.codigoarticulo, sessionStorage.getItem("nombreusuario"), articulo);
     this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
+  }
+
+  AsociateSupplier(){
+    this.router.navigateByUrl("products/"+sessionStorage.getItem("nombreusuario")+"/"+this.codigoarticulo+"/suppliers")
+  }
+  AddReduction(){
 
   }
 }

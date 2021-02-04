@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Articulo } from '../model/ArticuloModel';
+import { Proveedor } from '../model/ProveedorModel';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Articulo } from '../model/ArticuloModel';
 })
 export class ArticlesService {
 
-  constructor(private http: HttpClient,public jwtHelper: JwtHelperService,public router: Router) { }
+  constructor(private http: HttpClient,public jwtHelper: JwtHelperService, public router: Router) { }
 
   getArticleByCode(codigo: string) {
     let headers = new Headers({'Content-Type': 'application/json'});  
@@ -33,6 +34,15 @@ export class ArticlesService {
     this.http.put("http://localhost:8080/"+nombre+"/articulos/"+codigo, articulo, 
     {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'text/plain'}),
     }).subscribe(data => console.log("data= ", data));
+  }
+
+  addSupplier(codigoarticulo, nombreproveedor:Proveedor){
+    console.log("El que se le manda al server es ",nombreproveedor);
+    console.log("Codigoarticulo ",codigoarticulo);
+    this.http.post("http://localhost:8080/articulos/"+codigoarticulo+"/proveedores", nombreproveedor, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'application/json', 'Content-Type':'application/json'}),
+    }).subscribe(data => console.log("data= ", data));
+  
   }
   
 }
