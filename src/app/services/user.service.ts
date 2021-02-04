@@ -48,4 +48,10 @@ export class UserService {
     }).subscribe(data => console.log("data= ", data));
   }
 
+  updateUser(nombreusuario: string, usuario: UsuarioNuevo){
+    console.log("el q envio es ", usuario);
+    this.http.put("http://localhost:8080/usuarios/"+nombreusuario, usuario, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'text/plain'}),
+    }).subscribe(data => console.log("data= ", data));
+  }
 }

@@ -35,6 +35,7 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { AddUserComponent } from './component/add-user/add-user.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { UserListComponent } from './component/user-list/user-list.component';
+import { UpdateUserComponent } from './component/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UserListComponent } from './component/user-list/user-list.component';
     AddReductionComponent,
     UserProfileComponent,
     AddUserComponent,
-    UserListComponent
+    UserListComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
