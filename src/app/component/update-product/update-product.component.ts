@@ -5,6 +5,8 @@ import { ArticlesService } from 'src/app/services/articles.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/UsuarioModel';
 import { Articulo } from 'src/app/model/ArticuloModel';
+import { DisableArticleDialogComponent } from '../disable-article-dialog/disable-article-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Estado{
   estado_number: number,
@@ -17,17 +19,13 @@ interface Estado{
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent implements OnInit {
-  estados_disponibles: Estado[]= [
-    {estado_number: 1, estado_string: 'EN VENTA'},
-    {estado_number: 2, estado_string: 'DESCATALOGADO'}
-  ];
   descripcion;
   precio;
   estado;
   codigoarticulo;
   articulo;
   valid;
-  constructor(private articleService: ArticlesService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private articleService: ArticlesService, private activatedRoute: ActivatedRoute, private router: Router,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.valid=true;
@@ -47,24 +45,49 @@ export class UpdateProductComponent implements OnInit {
      
   }
   updateArticle(){
-    console.log("entrando al update")
-    if(this.descripcion=="" || this.precio==null|| this.estado==""){
-      this.valid=false;
+    if(this.estado==2){
+      this.dialog.open(DisableArticleDialogComponent, { data: `Introduzca el motivo por el que descataloga el artículo`})
+      .afterClosed().subscribe((confirmado:Boolean)=>{
+        if(confirmado){
+          if(this.descripcion=="" || this.precio==null|| this.estado==""){
+            this.valid=false;
+          }
+          console.log("estado es ", this.estado);
+          var creador : Usuario = {
+            idusuario: +sessionStorage.getItem("idusuario")
+          }
+          var articulo: Articulo = {
+            codigoarticulo: Number(this.codigoarticulo),
+            descripcion: this.descripcion,
+            precio: this.precio,
+            estado: Number(this.estado),
+            creador: creador
+          };
+          console.log("nombreusuario ",sessionStorage.getItem("nombreusuario"));
+          this.articleService.updateArticle(this.codigoarticulo, sessionStorage.getItem("nombreusuario"), articulo);
+          this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
+        }
+      })     
+    }else{
+      if(this.descripcion=="" || this.precio==null|| this.estado==""){
+        this.valid=false;
+      }
+      console.log("estado es ", this.estado);
+      var creador : Usuario = {
+        idusuario: +sessionStorage.getItem("idusuario")
+      }
+      var articulo: Articulo = {
+        codigoarticulo: Number(this.codigoarticulo),
+        descripcion: this.descripcion,
+        precio: this.precio,
+        estado: Number(this.estado),
+        creador: creador
+      };
+      console.log("nombreusuario ",sessionStorage.getItem("nombreusuario"));
+      this.articleService.updateArticle(this.codigoarticulo, sessionStorage.getItem("nombreusuario"), articulo);
+      this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
     }
-    console.log("estado es ", this.estado);
-    var creador : Usuario = {
-      idusuario: +sessionStorage.getItem("idusuario")
-    }
-    var articulo: Articulo = {
-      codigoarticulo: Number(this.codigoarticulo),
-      descripcion: this.descripcion,
-      precio: this.precio,
-      estado: Number(this.estado),
-      creador: creador
-    };
-    console.log("nombreusuario ",sessionStorage.getItem("nombreusuario"));
-    this.articleService.updateArticle(this.codigoarticulo, sessionStorage.getItem("nombreusuario"), articulo);
-    this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
+    
   }
 
   AsociateSupplier(){

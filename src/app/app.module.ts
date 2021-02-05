@@ -41,6 +41,7 @@ import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.c
 import { SupliersComponent } from './component/supliers/supliers.component';
 import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component';
 import { DeleteArticleDialogComponent } from './component/delete-article-dialog/delete-article-dialog.component';
+import { DisableArticleDialogComponent } from './component/disable-article-dialog/disable-article-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DeleteArticleDialogComponent } from './component/delete-article-dialog/
     DeleteDialogComponent,
     SupliersComponent,
     AllProductsAdminComponent,
-    DeleteArticleDialogComponent
+    DeleteArticleDialogComponent,
+    DisableArticleDialogComponent
   ],
   imports: [
     BrowserModule,

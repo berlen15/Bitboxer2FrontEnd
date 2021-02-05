@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>MOTIVO PARA DESCATALOGAR ARTÍCULO</h1>
+<div mat-dialog-content>
+    <h3>{{mensaje}}</h3>
+    <input type="text" [(ngModel)]="motivo" class="form-control" name="motivo" placeholder="Escribe aquí..." id="type" value="" required (keyup)="validateConfirm()">
+</div>
+<div mat-dialog-actions>
+    <button class="btn btn-danger" mat-button (click)="close()">Cancelar</button>
+    <button class="btn btn-success" mat-button (click)="accept()" cdkFocusInitial>Aceptar</button>
+
+</div>
