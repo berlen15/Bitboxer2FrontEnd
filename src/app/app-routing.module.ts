@@ -15,10 +15,12 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { AddUserComponent } from './component/add-user/add-user.component';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import { SupliersComponent } from './component/supliers/supliers.component';
+import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: 'products/admin', component: AllProductsAdminComponent},
   { path: 'products/:nombreusuario', component: ProductsComponent},
   { path: 'products/:nombreusuario/add', component: AddProductComponent},
   { path: 'products/:nombreusuario/:codigo', component: ProductDetailsComponent }, 

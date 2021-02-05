@@ -38,7 +38,8 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.component';
-import { SupliersComponent } from './component/supliers/supliers.component'
+import { SupliersComponent } from './component/supliers/supliers.component';
+import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component'
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { SupliersComponent } from './component/supliers/supliers.component'
     UserListComponent,
     UpdateUserComponent,
     DeleteDialogComponent,
-    SupliersComponent
+    SupliersComponent,
+    AllProductsAdminComponent
   ],
   imports: [
     BrowserModule,

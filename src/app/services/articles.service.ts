@@ -16,7 +16,11 @@ export class ArticlesService {
   constructor(private http: HttpClient,public jwtHelper: JwtHelperService, public router: Router) { }
 
   getArticles(){
-    return this.http.get('http://localhost:8080/articulos');
+    return this.http.get('http://localhost:8080/articulos', {
+      headers: new HttpHeaders(
+          {'Authorization': sessionStorage.getItem('token')}
+        )
+      });
   }
 
   getArticleByCode(codigo: string) {
@@ -54,4 +58,5 @@ export class ArticlesService {
     {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'application/json'}),'responseType':'text'
     }).subscribe(data => console.log("data = ", data));  
   }
+
 }

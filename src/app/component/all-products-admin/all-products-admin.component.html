@@ -1,0 +1,33 @@
+
+<app-navbar></app-navbar>
+<div class="container jumbotron">
+    <div class="container">
+      <div class="col-12 table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">CÓDIGO</th>
+              <th scope="col">DESCRIPCIÓN</th>
+              <th scope="col">PRECIO</th>
+              <th scope="col">ESTADO</th>
+              <th scope="col">CREADOR</th>
+              <th scope="col">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let articulo of articulos">
+              <th scope="row">{{articulo.codigoarticulo}}</th>
+              <td>{{articulo.descripcion}}</td>
+              <td>{{articulo.precio}} €</td>
+              <td *ngIf="articulo.estado==2">DESCATALOGADO</td>
+              <td *ngIf="articulo.estado==1">EN VENTA</td>
+              <td>{{articulo.creador.nombreusuario}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deleteProduct(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

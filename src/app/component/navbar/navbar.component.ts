@@ -32,6 +32,7 @@ all_products_url;
     this.all_products_url="product"
     this.users_url="users";
     this.suppliers_url="supliers"
+    this.products_admin_url="products/admin"
   }
   logout(){
     this.authService.logOut();
