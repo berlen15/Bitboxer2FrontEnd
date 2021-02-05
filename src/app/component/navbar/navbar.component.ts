@@ -31,6 +31,7 @@ all_products_url;
     this.profile_url="profile/"+this.nombreusuario;
     this.all_products_url="product"
     this.users_url="users";
+    this.suppliers_url="supliers"
   }
   logout(){
     this.authService.logOut();

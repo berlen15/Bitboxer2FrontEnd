@@ -37,7 +37,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { UserListComponent } from './component/user-list/user-list.component';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.component'
+import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.component';
+import { SupliersComponent } from './component/supliers/supliers.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.c
     AddUserComponent,
     UserListComponent,
     UpdateUserComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SupliersComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { UserListComponent } from './component/user-list/user-list.component';
 import { AddUserComponent } from './component/add-user/add-user.component';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { SupliersComponent } from './component/supliers/supliers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'users/add', component: AddUserComponent },
   { path: 'users/:nombreusuario/edit', component: UpdateUserComponent },
+  { path: 'supliers', component: SupliersComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent }
   
