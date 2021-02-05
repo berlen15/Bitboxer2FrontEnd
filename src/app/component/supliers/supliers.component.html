@@ -1,1 +1,65 @@
-<p>supliers works!</p>
+<app-navbar></app-navbar>
+<div class="container jumbotron">
+        <button type="button" class="btn btn-success text-right" (click)="suplierList()">Listado de proveedores</button>
+    <button type="button" class="btn btn-success text-right" (click)="optionArticlesCheapest()">Ver artículos más baratos de proveedores</button>
+    <button type="button" class="btn btn-success text-right" (click)="optionArticlesReduction()" >Ver proveedores asociados a artículos reducidos</button>
+    <div class="container">
+      <div class="col-12 table-responsive" *ngIf="opcion_articulos==false && opcion_reduccion==false">
+        <h4>LISTADO DE PROVEEDORES</h4>
+        <table class="table" *ngIf="opcion_articulos==false && opcion_reduccion==false">           
+          <thead>
+            <tr>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">PAÍS</th>           
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let proveedor of proveedores">
+              <th scope="row">{{proveedor.nombre}}</th>
+              <td>{{proveedor.pais}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-12 table-responsive" *ngIf="opcion_articulos==true">
+        <h4>ARTÍCULOS MÁS BARATOS ASOCIADOS A LOS PROVEEDORES DE LA LISTA</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">CÓDIGO</th>
+                <th scope="col">DESCRIPCIÓN</th>
+                <th scope="col">PROVEEDOR</th>           
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let articulo of articulos_baratos">
+                <th scope="row">{{articulo.codigoarticulo}}</th>
+                <td>{{articulo.descripcion}}</td>
+                <td>{{articulo.proveedores}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 table-responsive" *ngIf="opcion_reduccion==true">
+        <div *ngIf="proveedores_articulos_reducidos.length==0"><h4>No existen proveedores que tengan asociados artículos rebajados</h4></div>
+        <div  *ngIf="proveedores_articulos_reducidos.length>0">
+            <h4>PROVEEDORES ASOCIADOS A ARTÍCULOS CON PRECIO REBAJADO</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">PAÍS</th>           
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let proveedor of proveedores_articulos_reducidos">
+                    <th scope="row">{{proveedor.nombre}}</th>
+                    <td>{{proveedor.pais}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    </div>
+  </div>

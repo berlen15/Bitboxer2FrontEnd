@@ -26,4 +26,22 @@ export class SupplierService {
         )
       });
   }
+
+  getSupplierWithArticlesReductions(){
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    return this.http.get("http://localhost:8080/proveedores/articulos/reduccion", {
+      headers: new HttpHeaders(
+          {'Authorization': sessionStorage.getItem('token')}
+        )
+      });
+  }
+
+  getArticlesCheapestPerSuplier(){
+    let headers = new Headers({'Content-Type': 'application/json'});  
+    return this.http.get("http://localhost:8080/proveedores/articulos", {
+      headers: new HttpHeaders(
+          {'Authorization': sessionStorage.getItem('token')}
+        )
+      });
+  }
 }
