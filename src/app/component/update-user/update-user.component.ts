@@ -29,6 +29,10 @@ export class UpdateUserComponent implements OnInit {
      this.usuario=data;
      console.log("queeeee ", this.usuario)  
      this.contrasena=this.usuario.contraseña;
+     this.nombre=this.usuario.nombre;
+     this.apellidos = this.usuario.apellidos;
+     this.ciudad = this.usuario.ciudad;
+     this.telefono=this.usuario.telefono;
     })
   }
   validateUser(){
@@ -46,6 +50,7 @@ export class UpdateUserComponent implements OnInit {
     }else{
       this.rol_string='USER';
     }
+    console.log("el rol es ", this.rol_string);
     var usuario: UsuarioNuevo = {
       nombreusuario: this.nombreusuario,
       contraseña: this.contrasena,
@@ -53,7 +58,8 @@ export class UpdateUserComponent implements OnInit {
       apellidos: this.apellidos,
       ciudad: this.ciudad,
       telefono: this.telefono,
-      rol: this.rol_string
+      rol:this.rol_string
+      
     }
 
     this.userService.updateUser(this.nombreusuario,usuario);

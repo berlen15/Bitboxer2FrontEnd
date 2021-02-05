@@ -51,7 +51,13 @@ export class UserService {
   updateUser(nombreusuario: string, usuario: UsuarioNuevo){
     console.log("el q envio es ", usuario);
     this.http.put("http://localhost:8080/usuarios/"+nombreusuario, usuario, 
-    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'text/plain'}),
+    {headers: new HttpHeaders({
+    'Authorization': sessionStorage.getItem('token'),
+    'Accept': 'text/plain',
+    "Access-Control-Allow-Headers" : "Content-Type",
+    "Access-Control-Allow-Origin": "https://localhost:8080",
+    "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+    }), responseType:'text'
     }).subscribe(data => console.log("data= ", data));
   }
 }

@@ -1,9 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="form_add_user">
-        <h2 class="text-center">AÑADIR USUARIO</h2>
+        <h2 class="text-center">EDITAR USUARIO</h2>
         <div class="vertical-separator">  </div>
-        <h4 class="text-center"> Campos obligatorios: Los campos señalados con asterisco (*) son obligatorios</h4>
         <div class="vertical-separator">  </div>
         <form method="POST" action = "" enctype="multipart/form-data">
           <div class="form-row">
@@ -27,19 +26,19 @@
           </div>
           <div class="form-group">
             <label for="Descripcion"><b>Nombre</b></label>
-            <input type="text" placeholder="{{usuario.nombre}}" [(ngModel)]="nombre" class="form-control" name="nombre" id="descripcion">
+            <input type="text" placeholder="{{nombre}}" [(ngModel)]="nombre" class="form-control" name="nombre" id="descripcion">
           </div>
           <div class="form-group">
             <label for="Precio"><b>Apellidos</b></label>
-            <input type="text" placeholder="{{usuario.apellidos}}" [(ngModel)]="apellidos" class="form-control" name="apellidos" id="apellidos" value="" min="0" step="any">
+            <input type="text" placeholder="{{apellidos}}" [(ngModel)]="apellidos" class="form-control" name="apellidos" id="apellidos" value="" min="0" step="any">
           </div>
           <div class="form-group">
               <label for="Precio"><b>Telefono</b></label>
-              <input type="text" placeholder="{{usuario.telefono}}" [(ngModel)]="telefono" class="form-control" name="telefono" id="telefono" value="" min="0" step="any">
+              <input type="text" placeholder="{{telefono}}" [(ngModel)]="telefono" class="form-control" name="telefono" id="telefono" value="" min="0" step="any">
             </div>
             <div class="form-group">
                 <label for="Precio"><b>Ciudad</b></label>
-                <input type="text" placeholder="{{usuario.ciudad}}" [(ngModel)]="ciudad" class="form-control" name="ciudad" id="ciudad" value="" min="0" step="any">
+                <input type="text" placeholder="{{ciudad}}" [(ngModel)]="ciudad" class="form-control" name="ciudad" id="ciudad" value="" min="0" step="any">
               </div>
 
           <div class="container">
