@@ -47,6 +47,7 @@ export class AuthService implements CanActivate{
     sessionStorage.removeItem("nombreusuario");
     sessionStorage.removeItem("usuario");
     sessionStorage.removeItem("rol");
+    sessionStorage.removeItem("token");
   }
 
 
