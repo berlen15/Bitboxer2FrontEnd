@@ -1,4 +1,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-html, body { height: 100%; }
+html, body { 
+    height: 100%; 
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3),rgba(0,0,0,0.6) 80%), url("https://img.lovepik.com/photo/50035/6614.jpg_wh860.jpg");
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

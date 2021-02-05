@@ -19,7 +19,7 @@ import { AllProductsAdminComponent } from './component/all-products-admin/all-pr
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard],data:      { imageUrl: '../assets/img/imagenfondo.jpg' }},
   { path: 'products/admin', component: AllProductsAdminComponent},
   { path: 'products/:nombreusuario', component: ProductsComponent},
   { path: 'products/:nombreusuario/add', component: AddProductComponent},

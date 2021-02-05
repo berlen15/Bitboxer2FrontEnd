@@ -18,6 +18,7 @@ export class AppComponent {
   constructor(private jwtHelper: JwtHelperService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    document.body.classList.add('bg-img');
     this.activatedRoute.params.subscribe(params => {
       this.reloadPage();
   });
