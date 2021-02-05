@@ -60,4 +60,15 @@ export class UserService {
     }), responseType:'text'
     }).subscribe(data => console.log("data= ", data));
   }
+
+  deleteUser(nombreusuario){
+    console.log("eliminar es ", nombreusuario);
+    this.http.delete("http://localhost:8080/usuarios/"+nombreusuario, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),
+    'Accept': 'text/plain',
+    "Access-Control-Allow-Headers" : "Content-Type",
+    "Access-Control-Allow-Origin": "https://localhost:8080",
+    "Access-Control-Allow-Methods": "DELETE"}),
+    }).subscribe(data => console.log("data= ", data));
+  }
 }

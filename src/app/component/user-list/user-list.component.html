@@ -24,7 +24,7 @@
               <td>{{usuario.ciudad}}</td>
               <td>{{usuario.telefono}}</td>
               <td>
-                <button type="button" class="btn btn-danger">ELIMINAR <i class="fas fa-user-minus"></i></button>
+                <button type="button" class="btn btn-danger" (click)="openDialog(usuario.nombreusuario)">ELIMINAR <i class="fas fa-user-minus"></i></button>
                 <button type="button" class="btn btn-warning" (click)="editUser(usuario.nombreusuario)">EDITAR <i class="fas fa-edit"></i></button>
               </td>
             </tr>
