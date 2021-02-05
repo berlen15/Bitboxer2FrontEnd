@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { DeleteArticleDialogComponent } from '../delete-article-dialog/delete-article-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-all-products-admin',
@@ -8,13 +10,38 @@ import { ArticlesService } from 'src/app/services/articles.service';
 })
 export class AllProductsAdminComponent implements OnInit {
   articulos;
+  articulos_venta;
+  articulos_descatalogados;
   creador;
-  constructor(private articleService:ArticlesService) { }
+  estado;
+  constructor(private articleService:ArticlesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.estado=0;   
     this.articleService.getArticles().subscribe(data=>{
       this.articulos=data;
+    }); 
+    this.articleService.filterArticles("Venta").subscribe(data=>{
+      this.articulos_venta=data;
+      console.log("articulos venta ", this.articulos_venta);
+    })
+    this.articleService.filterArticles("Descatalogado").subscribe(data=>{
+      this.articulos_descatalogados=data;
+      console.log("articulos desc ", this.articulos_descatalogados);
+    })
+  }
 
-    });
+  openDialog(codigoarticulo){
+    
+    this.dialog.open(DeleteArticleDialogComponent, { data: `¿Está seguro de que desea eliminar el artículo con código`+codigoarticulo+`?`})
+    .afterClosed().subscribe((confirmado:Boolean)=>{
+      if(confirmado){
+        console.log("El obtenido es ", codigoarticulo);
+        this.articleService.deleteArticle(codigoarticulo);
+        alert("Se ha eliminado el artículo");
+        window.location.reload();
+      }
+    })
+  
   }
 }

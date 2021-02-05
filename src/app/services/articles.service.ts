@@ -22,6 +22,13 @@ export class ArticlesService {
         )
       });
   }
+  filterArticles(estado){
+    return this.http.get('http://localhost:8080/articulos/filter?estado='+estado, {
+      headers: new HttpHeaders(
+          {'Authorization': sessionStorage.getItem('token')}
+        )
+      });
+  }
 
   getArticleByCode(codigo: string) {
     let headers = new Headers({'Content-Type': 'application/json'});  
@@ -59,4 +66,14 @@ export class ArticlesService {
     }).subscribe(data => console.log("data = ", data));  
   }
 
+  deleteArticle(codigoarticulo){
+    console.log("El que llega es ", codigoarticulo);
+    this.http.delete("http://localhost:8080/articulos/"+codigoarticulo, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),
+    'Accept': 'text/plain',
+    "Access-Control-Allow-Headers" : "Content-Type",
+    "Access-Control-Allow-Origin": "https://localhost:8080",
+    "Access-Control-Allow-Methods": "DELETE"}),
+    }).subscribe(data => console.log("data= ", data));
+  }
 }

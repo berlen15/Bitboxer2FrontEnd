@@ -39,7 +39,8 @@ import { UpdateUserComponent } from './component/update-user/update-user.compone
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.component';
 import { SupliersComponent } from './component/supliers/supliers.component';
-import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component'
+import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component';
+import { DeleteArticleDialogComponent } from './component/delete-article-dialog/delete-article-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AllProductsAdminComponent } from './component/all-products-admin/all-pr
     UpdateUserComponent,
     DeleteDialogComponent,
     SupliersComponent,
-    AllProductsAdminComponent
+    AllProductsAdminComponent,
+    DeleteArticleDialogComponent
   ],
   imports: [
     BrowserModule,
