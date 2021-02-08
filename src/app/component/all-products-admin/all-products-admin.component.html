@@ -1,0 +1,69 @@
+
+<app-navbar></app-navbar>
+<div class="container jumbotron">
+    <mat-form-field appearance="fill">
+        <mat-label>Filtrar artículos: </mat-label>
+        <mat-select name="rol" [(ngModel)]="estado">
+            <mat-option [value]="0">MOSTRAR TODOS</mat-option>
+            <mat-option [value]="1">ARTÍCULOS EN VENTA</mat-option>
+            <mat-option [value]="2">ARTÍCULOS DESCATALOGADOS</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="container">
+      <div class="col-12 table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">CÓDIGO</th>
+              <th scope="col">DESCRIPCIÓN</th>
+              <th scope="col">PRECIO</th>
+              <th scope="col">ESTADO</th>
+              <th scope="col">CREADOR</th>
+              <th scope="col">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="estado==0">
+            <tr *ngFor="let articulo of articulos">
+              <th scope="row">{{articulo.codigoarticulo}}</th>
+              <td>{{articulo.descripcion}}</td>
+              <td>{{articulo.precio}} €</td>
+              <td *ngIf="articulo.estado==2">DESCATALOGADO</td>
+              <td *ngIf="articulo.estado==1">EN VENTA</td>
+              <td>{{articulo.creador.nombreusuario}}</td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="openDialog(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody *ngIf="estado==1">
+              <tr *ngFor="let articulo of articulos_venta">
+                <th scope="row">{{articulo.codigoarticulo}}</th>
+                <td>{{articulo.descripcion}}</td>
+                <td>{{articulo.precio}} €</td>
+                <td *ngIf="articulo.estado==2">DESCATALOGADO</td>
+                <td *ngIf="articulo.estado==1">EN VENTA</td>
+                <td>{{articulo.creador.nombreusuario}}</td>
+                <td>
+                  <button type="button" class="btn btn-danger" (click)="openDialog(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody *ngIf="estado==2">
+                <tr *ngFor="let articulo of articulos_descatalogados">
+                  <th scope="row">{{articulo.codigoarticulo}}</th>
+                  <td>{{articulo.descripcion}}</td>
+                  <td>{{articulo.precio}} €</td>
+                  <td *ngIf="articulo.estado==2">DESCATALOGADO</td>
+                  <td *ngIf="articulo.estado==1">EN VENTA</td>
+                  <td>{{articulo.creador.nombreusuario}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger" (click)="openDialog(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

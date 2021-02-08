@@ -1,7 +1,7 @@
 <!--<p>Bienvenid@ {{nombreusuario}}</p>
 <p>TU rol es {{usuario.rol.name}}</p>-->
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container" *ngIf="usuario.rol.name=='USER'">
   <header class="jumbotron">
       <div class="container">
           <p>Lista rápida de artículos creados</p>            
@@ -25,3 +25,27 @@
         </div>
   </header>
 </div>
+<div class="container" *ngIf="usuario.rol.name=='ADMIN'">
+    <header class="jumbotron">
+        <div class="container">
+            <p>Lista rápida de usuarios</p>            
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th><h4>NOMBRE DE USUARIO</h4></th>
+                  <th><h4>NOMBRE</h4></th>
+                  <th><h4>APELLIDOS</h4></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let u of usuarios">
+                  <td><h4 *ngIf="usuario.nombreusuario!=u.nombreusuario">{{u.nombreusuario}}</h4><h4 *ngIf="usuario.nombreusuario==u.nombreusuario">{{u.nombreusuario}} (Tú)</h4></td>
+                  <td><h4>{{u.nombre}}</h4></td>
+                  <td><h4>{{u.apellidos}}</h4></td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+    </header>
+  </div>

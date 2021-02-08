@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="form_add_user">
+        <h2 class="text-center">AÑADIR USUARIO</h2>
+        <div class="vertical-separator">  </div>
+        <h4 class="text-center"> Campos obligatorios: Los campos señalados con asterisco (*) son obligatorios</h4>
+        <div class="vertical-separator">  </div>
+        <form method="POST" action = "" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group col-md-8">
+            <label for="Nombre"><b>* Nombre de usuario</b></label>
+            <input type="text" class="form-control" [(ngModel)]="nombreusuario" name="nombreusuario" id="nombreusuario" value="" required (keyup)="validateUser()">
+            <div *ngIf="validUser==false">El nombre de usuario ya está en uso</div>
+            <label for="Nombre"><b>* Contraseña</b></label>
+            <input type="password" class="form-control" [(ngModel)]="contrasena" name="contrasena" id="contrasena" value="" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Tipo"><b>* Rol</b></label>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>* Rol</mat-label>
+                    <mat-select [(ngModel)]="rol" name="rol">
+                        <mat-option [value]="1">ADMINISTRADOR</mat-option>
+                        <mat-option [value]="2">USUARIO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Descripcion"><b>Nombre</b></label>
+            <input type="text" [(ngModel)]="nombre" class="form-control" name="nombre" id="descripcion">
+          </div>
+          <div class="form-group">
+            <label for="Precio"><b>Apellidos</b></label>
+            <input type="text"  [(ngModel)]="apellidos" class="form-control" name="apellidos" id="apellidos" value="" min="0" step="any">
+          </div>
+          <div class="form-group">
+              <label for="Precio"><b>Telefono</b></label>
+              <input type="text"  [(ngModel)]="telefono" class="form-control" name="telefono" id="telefono" value="" min="0" step="any">
+            </div>
+            <div class="form-group">
+                <label for="Precio"><b>Ciudad</b></label>
+                <input type="text"  [(ngModel)]="ciudad" class="form-control" name="ciudad" id="ciudad" value="" min="0" step="any">
+              </div>
+
+          <div class="container">
+              <div class="row">
+                <div class="col text-center" *ngIf="validUser===false">                    
+                  <button type="submit" name="store-activity" class="btn btn-primary" disabled>Guardar</button>
+                </div>
+                <div class="col text-center" *ngIf="validUser==true">                    
+                    <button type="submit" name="store-activity" class="btn btn-primary" (click)="saveUser()">Guardar</button>
+                </div>
+              </div>
+          </div>
+        </form>
+
+    </div>
+</div>

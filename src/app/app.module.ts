@@ -32,7 +32,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
-
+import { AddUserComponent } from './component/add-user/add-user.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { UserListComponent } from './component/user-list/user-list.component';
+import { UpdateUserComponent } from './component/update-user/update-user.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteDialogComponent } from './component/delete-dialog/delete-dialog.component';
+import { SupliersComponent } from './component/supliers/supliers.component';
+import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component';
+import { DeleteArticleDialogComponent } from './component/delete-article-dialog/delete-article-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,12 +56,21 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
     UpdateProductComponent,
     AsociateSupplierComponent,
     AddReductionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AddUserComponent,
+    UserListComponent,
+    UpdateUserComponent,
+    DeleteDialogComponent,
+    SupliersComponent,
+    AllProductsAdminComponent,
+    DeleteArticleDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    MatGridListModule,
     MatTabsModule,
     MatTableModule,
     MatSelectModule,

@@ -15,6 +15,21 @@ export class ArticlesService {
 
   constructor(private http: HttpClient,public jwtHelper: JwtHelperService, public router: Router) { }
 
+  getArticles(){
+    return this.http.get('http://localhost:8080/articulos', {
+      headers: new HttpHeaders(
+          {'Authorization': sessionStorage.getItem('token')}
+        )
+      });
+  }
+  filterArticles(estado){
+    return this.http.get('http://localhost:8080/articulos/filter?estado='+estado, {
+      headers: new HttpHeaders(
+          {'Authorization': sessionStorage.getItem('token')}
+        )
+      });
+  }
+
   getArticleByCode(codigo: string) {
     let headers = new Headers({'Content-Type': 'application/json'});  
     return this.http.get("http://localhost:8080/articulos/"+codigo, {
@@ -49,5 +64,16 @@ export class ArticlesService {
     this.http.post("http://localhost:8080/"+nombreusuario+"/articulos/"+codigoarticulo+"/reducciones", reduccion, 
     {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'application/json'}),'responseType':'text'
     }).subscribe(data => console.log("data = ", data));  
+  }
+
+  deleteArticle(codigoarticulo){
+    console.log("El que llega es ", codigoarticulo);
+    this.http.delete("http://localhost:8080/articulos/"+codigoarticulo, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),
+    'Accept': 'text/plain',
+    "Access-Control-Allow-Headers" : "Content-Type",
+    "Access-Control-Allow-Origin": "https://localhost:8080",
+    "Access-Control-Allow-Methods": "DELETE"}),
+    }).subscribe(data => console.log("data= ", data));
   }
 }

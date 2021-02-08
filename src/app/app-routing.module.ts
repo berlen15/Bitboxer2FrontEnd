@@ -11,9 +11,16 @@ import { UpdateProductComponent } from './component/update-product/update-produc
 import { AsociateSupplierComponent } from './component/asociate-supplier/asociate-supplier.component';
 import { AddReductionComponent } from './component/add-reduction/add-reduction.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { UserListComponent } from './component/user-list/user-list.component';
+import { AddUserComponent } from './component/add-user/add-user.component';
+import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { SupliersComponent } from './component/supliers/supliers.component';
+import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: 'products/admin', component: AllProductsAdminComponent},
   { path: 'products/:nombreusuario', component: ProductsComponent},
   { path: 'products/:nombreusuario/add', component: AddProductComponent},
   { path: 'products/:nombreusuario/:codigo', component: ProductDetailsComponent }, 
@@ -21,9 +28,13 @@ const routes: Routes = [
   { path: 'products/:nombreusuario/:codigo/suppliers', component: AsociateSupplierComponent },
   { path: 'products/:nombreusuario/:codigo/reduction', component: AddReductionComponent },
   { path: 'profile/:nombreusuario', component: UserProfileComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/add', component: AddUserComponent },
+  { path: 'users/:nombreusuario/edit', component: UpdateUserComponent },
+  { path: 'supliers', component: SupliersComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'admin', component: AdminComponent }
+  
 ];
 
 @NgModule({
