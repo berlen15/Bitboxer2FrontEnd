@@ -3,7 +3,8 @@ form{
 }
 
 .form-control:focus {
-    color: #495057;
+    font-size:16px;
+    color: #2748C6;
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
@@ -25,7 +26,12 @@ form{
     padding:10px;
 }
 .container{
-    background-color:#D8E6F3;
+    background-color: #2748C6;
+    color:white;
     padding:25px;
     border-radius:15px;
+}
+
+.btn{
+    font-size:16px;
 }
