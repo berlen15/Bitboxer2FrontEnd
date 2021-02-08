@@ -1,8 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container jumbotron">
-        <button type="button" class="btn btn-success text-right" (click)="suplierList()">Listado de proveedores</button>
-    <button type="button" class="btn btn-success text-right" (click)="optionArticlesCheapest()">Ver artículos más baratos de proveedores</button>
-    <button type="button" class="btn btn-success text-right" (click)="optionArticlesReduction()" >Ver proveedores asociados a artículos reducidos</button>
+    <div class="btn-group btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-primary" (click)="suplierList()">Listado de proveedores</button>
+          <button type="button" class="btn btn-primary" (click)="optionArticlesCheapest()">Ver artículos más baratos de proveedores</button>
+          <button type="button" class="btn btn-primary" (click)="optionArticlesReduction()" >Ver proveedores asociados a artículos reducidos</button>
+        </div>
+    </div>
     <div class="container">
       <div class="col-12 table-responsive" *ngIf="opcion_articulos==false && opcion_reduccion==false">
         <h4>LISTADO DE PROVEEDORES</h4>
@@ -27,15 +31,13 @@
             <thead>
             <tr>
                 <th scope="col">CÓDIGO</th>
-                <th scope="col">DESCRIPCIÓN</th>
-                <th scope="col">PROVEEDOR</th>           
+                <th scope="col">DESCRIPCIÓN</th>        
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let articulo of articulos_baratos">
                 <th scope="row">{{articulo.codigoarticulo}}</th>
                 <td>{{articulo.descripcion}}</td>
-                <td>{{articulo.proveedores}}</td>
             </tr>
             </tbody>
         </table>

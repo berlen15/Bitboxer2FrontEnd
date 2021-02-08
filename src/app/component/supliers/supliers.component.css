@@ -19,3 +19,12 @@
   table{
       font-size:16px;
   }
+  button{
+    font-size:16px;
+    margin:5px;
+    border-radius: 15px;
+   
+  }
+  .btn-group{
+    margin-left: 25px;
+  }
