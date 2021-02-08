@@ -1,17 +1,36 @@
 <app-navbar></app-navbar>
 <div class="container jumbotron">
-    <div class="form_add_user">
-        <h2 class="text-center">AÑADIR REDUCCIÓN</h2>
+    <h3 class="text-center">INFORMACIÓN DEL ARTÍCULO </h3>
+    <div class="row d-flex justify-content-center">
+    
+        <div class="col-md-8">
+            <h2>DESCRIPCIÓN DEL ARTÍCULO</h2>
+        <p>{{articulo.descripcion}}</p>
+        </div>
+    
+        <div class="col-md-8">           
+        <h2 class="my-3">DETALLES DEL ARTÍCULO</h2>
+        <ul>
+            <li><p>CÓDGIO: {{articulo.codigoarticulo}}</p></li>
+            <li *ngIf="articulo.estado==1"><p>ESTADO: EN VENTA</p></li>
+            <li *ngIf="articulo.estado==2"><p>ESTADO: DESCATALOGADO</p></li>
+            <li><p>PRECIO: {{articulo.precio}} €</p></li>
+        </ul>
+        </div>      
+    </div>
+    <hr>
+    <div class="form_add_user ">
+        <h3 class="text-center">Rellene los siguientes campos para añadir la reducción (Los campos señalados con * (asterisco) son obligatorios)</h3>
         <div class="vertical-separator">  </div>
         <div class="vertical-separator">  </div>
         <form method="POST" action = "" enctype="multipart/form-data">
-          <div class="form-row">
+          <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md-4 mt-5">
             <label for="Nombre"><b>* Código del artículo (numérico)</b></label>
             <input type="number" class="form-control" name="codigoarticulo" id="codigoarticulo" value="{{codigoarticulo}}" readonly>
             </div>
-            <div class="form-group col-md-6 mt-5">
-                <label for="Precio"><b>Cantidad (%)</b></label>
+            <div class="form-group col-md-4 mt-5">
+                <label for="Precio"><b>* Cantidad (%)</b></label>
                 <input type="number" [(ngModel)]="cantidad" class="form-control" name="cantidad" id="cantidad" placeholder="EJ: 50" min="0" step="any" required>
               </div>
             
@@ -19,7 +38,7 @@
           <div class="form-row d-flex justify-content-center">
               <div class="form-group form-control-lg mt-5">
                   <mat-form-field appearance="fill">
-                      <mat-label>Elige una fecha de inicio</mat-label>
+                      <mat-label>Seleccione una fecha de inicio</mat-label>
                       <input matInput [formControl]="inicio_datepicker" [matDatepicker]="picker">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
@@ -27,7 +46,7 @@
               </div>
               <div class="form-group form-control-lg mt-5">
                   <mat-form-field appearance="fill">
-                      <mat-label>Elige una fecha de fin</mat-label>
+                      <mat-label>* Seleccione una fecha de fin</mat-label>
                       <input matInput [formControl]="fin_datepicker" [matDatepicker]="picker2">
                       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                       <mat-datepicker #picker2></mat-datepicker>
@@ -37,7 +56,7 @@
             
           <div class="container mt-5">
               <div class="row d-flex justify-content-center">                  
-                <button type="submit" class="text-center" name="store-activity" class="btn btn-primary text-center" (click)="saveReduction()">Guardar</button>
+                <button type="submit" class="text-center" name="store-activity" class="btn btn-primary" (click)="saveReduction()">Guardar</button>
               </div>
               <div class="error-msg mt-5 bg-danger text-center" *ngIf="validDate==false"><h4>La fecha de fin no puede ser inferior a la de inicio</h4></div>
               <div *ngIf="validReduction==false" class="error-msg mt-5 bg-danger"><h4>No se puede añadir una reducción al artículo porque ya tiene una vigente.
