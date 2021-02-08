@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container jumbotron">
     <div class="form_add_user">
         <h2 class="text-center">AÑADIR REDUCCIÓN</h2>
         <div class="vertical-separator">  </div>
@@ -16,7 +16,7 @@
               </div>
             
           </div>
-          <div class="form-row">
+          <div class="form-row d-flex justify-content-center">
               <div class="form-group form-control-lg mt-5">
                   <mat-form-field appearance="fill">
                       <mat-label>Elige una fecha de inicio</mat-label>
@@ -36,8 +36,8 @@
             </div>
             
           <div class="container mt-5">
-              <div class="row">                  
-                <button type="submit" class="text-center" name="store-activity" class="btn btn-primary" (click)="saveReduction()">Guardar</button>
+              <div class="row d-flex justify-content-center">                  
+                <button type="submit" class="text-center" name="store-activity" class="btn btn-primary text-center" (click)="saveReduction()">Guardar</button>
               </div>
               <div class="error-msg mt-5 bg-danger text-center" *ngIf="validDate==false"><h4>La fecha de fin no puede ser inferior a la de inicio</h4></div>
               <div *ngIf="validReduction==false" class="error-msg mt-5 bg-danger"><h4>No se puede añadir una reducción al artículo porque ya tiene una vigente.
