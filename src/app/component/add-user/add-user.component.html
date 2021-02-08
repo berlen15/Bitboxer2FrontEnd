@@ -10,8 +10,8 @@
             <div class="form-group col-md-8">
             <label for="Nombre"><b>* Nombre de usuario</b></label>
             <input type="text" class="form-control" [(ngModel)]="nombreusuario" name="nombreusuario" id="nombreusuario" value="" required (keyup)="validateUser()">
-            <div *ngIf="validUser==false && emptyUser==false">El nombre de usuario ya está en uso</div>
-            <div *ngIf="emptyUser==true">El nombre de usuario no puede quedar vacío</div>
+            <div class="error-msg" *ngIf="validUser==false && emptyUser==false"><p>El nombre de usuario ya está en uso</p></div>
+            <div class="error-msg" *ngIf="emptyUser==true"><p>El nombre de usuario no puede quedar vacío</p></div>
             <label for="Nombre"><b>* Contraseña</b></label>
             <input type="password" class="form-control" [(ngModel)]="contrasena" name="contrasena" id="contrasena" value="" required>
             </div>
