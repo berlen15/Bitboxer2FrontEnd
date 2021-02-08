@@ -16,11 +16,9 @@ export class AllProductsAdminComponent implements OnInit {
   estado;
   constructor(private articleService:ArticlesService, public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.estado=0;   
-    this.articleService.getArticles().subscribe(data=>{
-      this.articulos=data;
-    }); 
+    this.articulos = await this.articleService.getArticles(); 
     this.articleService.filterArticles("Venta").subscribe(data=>{
       this.articulos_venta=data;
       console.log("articulos venta ", this.articulos_venta);
@@ -31,8 +29,7 @@ export class AllProductsAdminComponent implements OnInit {
     })
   }
 
-  openDialog(codigoarticulo){
-    
+  openDialog(codigoarticulo){    
     this.dialog.open(DeleteArticleDialogComponent, { data: `¿Está seguro de que desea eliminar el artículo con código`+codigoarticulo+`?`})
     .afterClosed().subscribe((confirmado:Boolean)=>{
       if(confirmado){

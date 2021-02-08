@@ -12,15 +12,19 @@ import { Reduccion } from '../model/ReduccionModel';
   providedIn: 'root'
 })
 export class ArticlesService {
-
+  
   constructor(private http: HttpClient,public jwtHelper: JwtHelperService, public router: Router) { }
+  delay(ms){
+    return new Promise(resolve => setTimeout(resolve, ms))
+   }
 
-  getArticles(){
-    return this.http.get('http://localhost:8080/articulos', {
+  async getArticles(){
+    await this.delay(500);
+    return await this.http.get('http://localhost:8080/articulos', {
       headers: new HttpHeaders(
           {'Authorization': sessionStorage.getItem('token')}
         )
-      });
+      }).toPromise();
   }
   filterArticles(estado){
     return this.http.get('http://localhost:8080/articulos/filter?estado='+estado, {
