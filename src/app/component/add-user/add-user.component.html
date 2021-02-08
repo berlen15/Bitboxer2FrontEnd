@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container jumbotron">
     <div class="form_add_user">
         <h2 class="text-center">AÑADIR USUARIO</h2>
         <div class="vertical-separator">  </div>
@@ -11,6 +11,7 @@
             <label for="Nombre"><b>* Nombre de usuario</b></label>
             <input type="text" class="form-control" [(ngModel)]="nombreusuario" name="nombreusuario" id="nombreusuario" value="" required (keyup)="validateUser()">
             <div *ngIf="validUser==false">El nombre de usuario ya está en uso</div>
+            <div *ngIf="emptyUser==true">El nombre de usuario no puede quedar vacío</div>
             <label for="Nombre"><b>* Contraseña</b></label>
             <input type="password" class="form-control" [(ngModel)]="contrasena" name="contrasena" id="contrasena" value="" required>
             </div>
@@ -45,10 +46,7 @@
 
           <div class="container">
               <div class="row">
-                <div class="col text-center" *ngIf="validUser===false">                    
-                  <button type="submit" name="store-activity" class="btn btn-primary" disabled>Guardar</button>
-                </div>
-                <div class="col text-center" *ngIf="validUser==true">                    
+                <div class="col text-center">                    
                     <button type="submit" name="store-activity" class="btn btn-primary" (click)="saveUser()">Guardar</button>
                 </div>
               </div>

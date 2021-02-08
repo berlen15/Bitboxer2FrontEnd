@@ -10,6 +10,7 @@ import { UsuarioNuevo } from 'src/app/model/newUserModel';
 })
 export class AddUserComponent implements OnInit {
   validUser:boolean;
+  emptyUser:boolean;
   nombreusuario:string;
   contrasena:string;
   ciudad:string;
@@ -21,18 +22,29 @@ export class AddUserComponent implements OnInit {
   constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
+    this.validUser=true;
+    this.emptyUser=false;
   }
 
   validateUser(){
-    this.userService.getUserByAdmin(this.nombreusuario).subscribe(data=>{
-      if(data!=null){
-        this.validUser=false;
-      }else{
-        this.validUser=true;
-      }
-    })
+    if(this.nombreusuario==null || this.nombreusuario==""){
+      this.emptyUser=true;
+    }else{
+      this.emptyUser=false;
+      this.userService.getUserByAdmin(this.nombreusuario).subscribe(data=>{
+        if(data!=null){
+          this.validUser=false;
+        }else{
+          this.validUser=true;
+        }
+      })
+    }
+    
   }
   saveUser(){
+    if(this.validUser==false || this.emptyUser==true){
+      return;
+    }
     if(this.rol==1){
       this.rol_string='ADMIN';
     }else{
