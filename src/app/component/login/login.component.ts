@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.authService.login(this.nombreusuario, this.contrasena).subscribe(
-      async data => {
-        await this.router.navigate(['home/',data.nombreusuario]);
+      data => {
+        this.router.navigate(['home/',data.nombreusuario]);
         this.ngOnInit();
       },
       err => {

@@ -15,6 +15,7 @@ export class SupliersComponent implements OnInit {
   constructor(private suplierService: SupplierService) { }
 
   ngOnInit(): void {
+    this.reloadPage();
     this.suplierService.getAllSuppliers().subscribe(data =>{console.log(data);this.proveedores=data});
     this.suplierService.getArticlesCheapestPerSuplier().subscribe(data=>{this.articulos_baratos=data});
     this.suplierService.getSupplierWithArticlesReductions().subscribe(data=>{this.proveedores_articulos_reducidos=data});
@@ -32,4 +33,18 @@ export class SupliersComponent implements OnInit {
     this.opcion_articulos=false;
     this.opcion_reduccion=false;
   }
+  reloadPage() {
+    // The last "domLoading" Time //
+    var currentDocumentTimestamp =
+    new Date(performance.timing.domLoading).getTime();
+    // Current Time //
+    var now = Date.now();
+    // Ten Seconds //
+    var tenSec = 10 * 1000;
+    // Plus Ten Seconds //
+    var plusTenSec = currentDocumentTimestamp + tenSec;
+    if (now > plusTenSec) {
+    window.location.reload();
+    } else {}
+    }
 }

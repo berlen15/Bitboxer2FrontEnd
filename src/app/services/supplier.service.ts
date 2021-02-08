@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NuevoProveedor } from '../model/newProveedor';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,11 @@ export class SupplierService {
           {'Authorization': sessionStorage.getItem('token')}
         )
       });
+  }
+
+  addSuplier(proveedor: NuevoProveedor){
+    this.http.post("http://localhost:8080/proveedores", proveedor, 
+    {headers: new HttpHeaders({'Authorization': sessionStorage.getItem('token'),'Accept': 'text/plain'}),
+    }).subscribe(data => console.log("data= ", data));
   }
 }

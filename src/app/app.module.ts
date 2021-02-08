@@ -42,6 +42,7 @@ import { SupliersComponent } from './component/supliers/supliers.component';
 import { AllProductsAdminComponent } from './component/all-products-admin/all-products-admin.component';
 import { DeleteArticleDialogComponent } from './component/delete-article-dialog/delete-article-dialog.component';
 import { DisableArticleDialogComponent } from './component/disable-article-dialog/disable-article-dialog.component';
+import { AddSupplierComponent } from './component/add-supplier/add-supplier.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DisableArticleDialogComponent } from './component/disable-article-dialo
     SupliersComponent,
     AllProductsAdminComponent,
     DeleteArticleDialogComponent,
-    DisableArticleDialogComponent
+    DisableArticleDialogComponent,
+    AddSupplierComponent
   ],
   imports: [
     BrowserModule,

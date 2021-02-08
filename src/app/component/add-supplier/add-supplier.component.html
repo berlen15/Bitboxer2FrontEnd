@@ -1,0 +1,36 @@
+
+<app-navbar></app-navbar>
+<div class="container jumbotron">
+    <div class="form_add_user ">
+        <h3 class="text-center">REGISTRAR PROVEEDOR</h3>
+        <div class="vertical-separator">  </div>
+        <div class="vertical-separator">  </div>
+        <form method="POST" action = "" enctype="multipart/form-data">
+          <div class="form-row d-flex justify-content-center">
+            <div class="form-group col-md-4 mt-5">
+            <label for="Nombre"><b>* Nombre</b></label>
+            <input type="text" class="form-control" name="codigoarticulo" id="codigoarticulo" [(ngModel)]="nombre" (keyup)="validateSuplier()">
+            <div class="error-msg" *ngIf="validSupplier==false && emptySupplier==false"><p>Ell proveedor ya existe</p></div>
+            <div class="error-msg" *ngIf="emptySupplier==true"><p>El nombre del proveedor no puede quedar vacío</p></div>
+              <div class="mt-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>Seleccionar país</mat-label>
+                  <mat-select [(ngModel)]="pais" name="paises">
+                    <mat-option *ngFor="let p of paises" [value]="p.value">
+                      {{p.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>            
+          </div>            
+          <div class="container mt-5">
+              <div class="row d-flex justify-content-center">                  
+                <button type="submit" class="text-center" name="store-activity" class="btn btn-primary" (click)="saveSupplier()">Guardar</button>
+              </div>
+              
+          </div>
+        </form>
+
+    </div>
+</div>
