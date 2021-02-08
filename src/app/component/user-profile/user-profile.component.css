@@ -1,16 +1,17 @@
 .container{
-    align-items: center;
+    padding:5%;
 }
-input.hidden {
-    position: absolute;
-    left: -9999px;
+.container .img{
+    text-align:center;
 }
-.panel-heading
-#profile-image1 {
-    cursor: pointer;
-  
-     width: 100px;
-    height: 100px;
-	border:2px solid blue ;}
-	.tital{ font-size:16px; font-weight:500;}
-	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
+.container .details{
+    border-left:3px solid #ded4da;
+}
+.container .details p{
+    font-size:15px;
+    font-weight:bold;
+}
+img{
+    height: 300px;
+    width:300px;
+}

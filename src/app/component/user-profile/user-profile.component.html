@@ -1,60 +1,20 @@
-
-<!------ Include the above in your HEAD tag ---------->
 <app-navbar></app-navbar>
-<div class="container">
-	<div class="row">       
-        <div class="col-md-7 ">
-
-            <div class="panel panel-default">
-            <div class="panel-heading">  <h4 >INFORMACIÓN DEL PERFIL</h4></div>
-                <div class="panel-body">
-                    
-                    <div class="box">
-                        
-                        <div class="box-body">
-                            <div class="col-sm-6">
-                                <div> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
-                                    <input id="profile-image-upload" class="hidden" type="file">
-                                </div>       
-                            </div>
-                            <div class="col-sm-6">
-                                <span><h4 style="color:#00b1b1;">USUARIO: {{usuario.nombreusuario}}</h4></span>
-                                <span><p>ROL: {{rol}}</p></span>            
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr style="margin:5px 0 5px 0;">
-                        
-                                
-                            <div class="col-sm-5 col-xs-6 tital " >Nombre:   </div><div class="col-sm-7 col-xs-6 ">{{usuario.nombre}}</div>
-
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-
-                            <div class="col-sm-5 col-xs-6 tital " >Apellidos: </div><div class="col-sm-7"> {{usuario.apellidos}}</div>
-
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-
-                            <div class="col-sm-5 col-xs-6 tital " >Ciudad: </div><div class="col-sm-7"> {{usuario.ciudad}}</div>
-
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-
-                            <div class="col-sm-5 col-xs-6 tital " >Teléfono:</div><div class="col-sm-7">{{usuario.telefono}}</div>
-
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-                        </div>
-
-                    </div>            
-                </div> 
-            </div>
-        </div>    
-    
-   </div>
+<div class="container jumbotron">
+  <div class="row">
+    <div class="col-md-6 img">
+        <blockquote>
+            <h2>Nombre de usuario: {{usuario.nombreusuario}}</h2>
+            <small><cite title="Source Title">Rol: {{usuario.rol.name}} <i class="icon-map-marker"></i></cite></small>
+        </blockquote>
+      <img src="https://www.pinclipart.com/picdir/big/164-1640714_user-symbol-interface-contact-phone-set-add-sign.png"  alt="" class="img-round">
+    </div>
+    <div class="col-md-6 details">
+      <blockquote>
+        <h2>Información personal</h2></blockquote>
+      <p>Nombre: {{usuario.nombre}}</p>
+      <p>Apellidos: {{usuario.apellidos}}</p>
+      <p>Población: {{usuario.ciudad}}</p>
+      <p>Número de teléfono: {{usuario.telefono}}</p>
+    </div>
+  </div>
 </div>
-
-
-
-
-         

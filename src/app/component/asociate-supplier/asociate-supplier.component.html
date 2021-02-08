@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container jumbotron">
         <!-- Portfolio Item Heading -->
-    <h1 class="my-4">INFORMACIÓN DEL ARTÍCULO</h1>
+    <h3 class="my-4 text-center">INFORMACIÓN DEL ARTÍCULO</h3>
     
     <!-- Portfolio Item Row -->
     <div class="row">
@@ -21,36 +21,18 @@
         </ul>
         </div>      
     </div>
-</div>
-<hr>
-<h3 class="text-center">LISTADO DE PROVEEDORES</h3>
-<div class="container" >
-    <div class="container">
-        <mat-form-field >
-            <mat-label>Selecciona un proveedor del listado para asociarlo al artículo</mat-label>
-            <mat-select [(ngModel)]="proveedor_asociado">
-                <mat-option *ngFor="let p of all_proveedores_disponibles" [value]="p.nombre">{{p.nombre}}</mat-option>
-            </mat-select>
-        </mat-form-field> 
-        <!--<div class="col-12 table-responsive">
-                
-            <h4 *ngIf="proveedores==null">ESTE ARTÍCULO AÚN NO TIENE PROVEEDORES ASOCIADOS ¿DESEA AÑADIR PROVEEDORES AHORA?</h4>
-            <table class="table" *ngIf="proveedores!=null">
-                <thead>
-                    <tr>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">PAÍS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let prov of proveedores">
-                    <td>{{prov.nombre}}</td>
-                    <td>{{prov.pais}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>  -->
-        <button type="submit" name="store-activity" class="btn btn-primary" (click)="asociateSupplier()">Asociar proveedor</button> 
-    </div>
-</div> 
 
+    <hr>
+    <h3 class="text-center">Seleccione un proveedor del listado para asociarlo al artículo</h3>
+    <div class="container mat-container">
+        <div class="container d-flex justify-content-center">
+            <mat-form-field class="text-center mat-form-field-container">
+                <mat-label>Proveedores disponibles</mat-label>
+                <mat-select [(ngModel)]="proveedor_asociado">
+                    <mat-option *ngFor="let p of all_proveedores_disponibles" [value]="p.nombre">{{p.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field> 
+            <button type="submit" name="store-activity" class="btn btn-primary text-center" (click)="asociateSupplier()">Asociar proveedor</button> 
+        </div>
+    </div> 
+</div>
