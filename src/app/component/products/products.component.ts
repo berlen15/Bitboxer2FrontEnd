@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   columnas: string[] = ['CÓDIGO', 'DESCRIPCIÓN', 'PRECIO', 'ESTADO', 'ACCIONES'];
   dataSource=null;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator1: MatPaginator;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {    
@@ -26,7 +26,8 @@ export class ProductsComponent implements OnInit {
       data => {       
         this.articulos = data;
         this.dataSource = new MatTableDataSource<Articulo>(this.articulos);
-        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator1;
+        console.log(this.dataSource);
       },
       err => {
         this.articulos = JSON.parse(err.error).message;
@@ -43,7 +44,5 @@ export class ProductsComponent implements OnInit {
   editProduct(codigo){
     this.route.navigateByUrl("products/"+this.usuario.nombreusuario+"/"+codigo+"/edit")
   }
-  /*addProduct(){
-    this.route.navigateByUrl(this.add_url);
-  }*/
+
 }

@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { Articulo } from 'src/app/model/ArticuloModel';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,6 +19,10 @@ export class HomeComponent implements OnInit {
   usuario;
   articulos;
   usuarios: Array<Object>;
+  columnas: string[] = ['CÓDIGO', 'DESCRIPCIÓN', 'PRECIO'];
+  dataSource=null;
+
+  @ViewChild(MatPaginator) paginator1: MatPaginator;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {    
@@ -27,11 +34,13 @@ export class HomeComponent implements OnInit {
       this.userService.getMyArticles(this.usuario.nombreusuario).subscribe(
         data => {       
           this.articulos = data;
-          console.log(this.articulos);
+          this.dataSource = new MatTableDataSource<Articulo>(this.articulos);
+          this.dataSource.paginator = this.paginator1;
+          console.log(this.dataSource);
         },
         err => {
           this.articulos = JSON.parse(err.error).message;
-      });
+        });
     }else if(this.usuario.rol.name=='ADMIN'){
       this.userService.getAllUsers().subscribe(data=>this.usuarios=data);
     }
