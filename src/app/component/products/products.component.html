@@ -4,30 +4,30 @@
   <button type="button" class="btn btn-success text-right"><a [href]="add_url">Añadir artículo</a></button>
   <div class="container">
     <div class="col-12 table-responsive">
-      <table mat-table [dataSource]="dataSource" class="jumbotron" #tabla1>        
-        <ng-container matColumnDef="CÓDIGO">
-          <th mat-header-cell *matHeaderCellDef class="text-center"> CÓDIGO </th>
+      <table mat-table [dataSource]="dataSource" class="jumbotron" matSort>        
+        <ng-container matColumnDef="codigoarticulo">
+          <th mat-header-cell *matHeaderCellDef class="text-right" mat-sort-header> CÓDIGO </th>
           <td mat-cell *matCellDef="let articulo"> {{articulo.codigoarticulo}} </td>
         </ng-container>
     
-        <ng-container matColumnDef="DESCRIPCIÓN">
-          <th mat-header-cell *matHeaderCellDef class="text-center"> DESCRIPCIÓN </th>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef class="text-right" mat-sort-header> DESCRIPCIÓN </th>
           <td mat-cell *matCellDef="let articulo" class="text-center"> {{articulo.descripcion}} </td>
         </ng-container>
     
-        <ng-container matColumnDef="PRECIO">
-          <th mat-header-cell *matHeaderCellDef class="text-center"> PRECIO </th>
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> PRECIO </th>
           <td mat-cell *matCellDef="let articulo" class="text-center"> {{articulo.precio}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="ESTADO">
-          <th mat-header-cell *matHeaderCellDef class="text-center"> ESTADO </th>
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> ESTADO </th>
           <td mat-cell *matCellDef="let articulo" class="text-center"> 
             <h4 *ngIf="articulo.estado==1" >EN VENTA</h4>
             <h4 *ngIf="articulo.estado==2">DESCATALOGADO</h4> </td>
         </ng-container>
 
-        <ng-container matColumnDef="ACCIONES">
+        <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef class="text-center"> ACCIONES </th>
           <td mat-cell *matCellDef="let articulo" > 
               <button type="button" class="btn btn-primary" (click)="showDetailsProduct(articulo.codigoarticulo)">VER DETALLES <i class="far fa-eye"></i></button>

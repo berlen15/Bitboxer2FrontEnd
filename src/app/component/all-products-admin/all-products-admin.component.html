@@ -16,7 +16,7 @@
             <mat-form-field class="example-full-width">
               <i class="fas fa-search search"></i>
               <mat-label>Busca un artículo aquí</mat-label>                
-              <input matInput class="input-search" placeholder="Buscar artículo...">
+              <input id="codigo" #input2 [(ngModel)]='codigo' [ngModelOptions]="{standalone: true}" type="number" matInput class="input-search" placeholder="Buscar artículo..." (keyup)="search()">
             </mat-form-field>
         </form>
       </div>
@@ -24,36 +24,36 @@
     <div class="container ">
       <div class="col-12 table-responsive">
 
-        <table  *ngIf="estado==0" mat-table [dataSource]="dataSource" class="jumbotron" #tabla1>        
-          <ng-container matColumnDef="CÓDIGO">
-            <th mat-header-cell *matHeaderCellDef> CÓDIGO </th>
+        <table  *ngIf="estado==0" mat-table [dataSource]="dataSource" class="jumbotron" #tabla1 matSort>        
+          <ng-container matColumnDef="codigoarticulo">
+            <th mat-header-cell *matHeaderCellDef class="text-right" mat-sort-header> CÓDIGO </th>
             <td mat-cell *matCellDef="let articulo"> {{articulo.codigoarticulo}} </td>
           </ng-container>
       
-          <ng-container matColumnDef="DESCRIPCIÓN">
-            <th mat-header-cell *matHeaderCellDef> DESCRIPCIÓN </th>
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> DESCRIPCIÓN </th>
             <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
           </ng-container>
       
-          <ng-container matColumnDef="PRECIO">
-            <th mat-header-cell *matHeaderCellDef> PRECIO </th>
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> PRECIO </th>
             <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="ESTADO">
-            <th mat-header-cell *matHeaderCellDef> ESTADO </th>
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> ESTADO </th>
             <td mat-cell *matCellDef="let articulo"> 
               <h4 *ngIf="articulo.estado==1">EN VENTA</h4>
               <h4 *ngIf="articulo.estado==2">DESCATALOGADO</h4> </td>
           </ng-container>
 
-          <ng-container matColumnDef="CREADOR">
-            <th mat-header-cell *matHeaderCellDef> CREADOR </th>
+          <ng-container matColumnDef="creador">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> CREADOR </th>
             <td mat-cell *matCellDef="let articulo"> {{articulo.creador.nombreusuario}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="ACCIONES">
-            <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> ACCIONES </th>
             <td mat-cell *matCellDef="let articulo"> 
               <button type="button" class="btn btn-danger" (click)="openDialog(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
             </td>
@@ -64,31 +64,36 @@
         </table>
 
       <!--TABLA FILTRADA POR ARTÍCULOS EN VENTA-->
-        <table  *ngIf="estado==1" mat-table [dataSource]="dataSourceVenta" class="jumbotron" #tabla2>        
-            <ng-container matColumnDef="CÓDIGO">
-              <th mat-header-cell *matHeaderCellDef> CÓDIGO </th>
+        <table  *ngIf="estado==1" mat-table [dataSource]="dataSourceVenta" class="jumbotron" #tabla2 matSort>        
+            <ng-container matColumnDef="codigoarticulo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> CÓDIGO </th>
               <td mat-cell *matCellDef="let articulo"> {{articulo.codigoarticulo}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="DESCRIPCIÓN">
-              <th mat-header-cell *matHeaderCellDef> DESCRIPCIÓN </th>
+            <ng-container matColumnDef="descripcion">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> DESCRIPCIÓN </th>
               <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="PRECIO">
-              <th mat-header-cell *matHeaderCellDef> PRECIO </th>
+            <ng-container matColumnDef="precio">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> PRECIO </th>
               <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="ESTADO">
-              <th mat-header-cell *matHeaderCellDef> ESTADO </th>
+            <ng-container matColumnDef="estado">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> ESTADO </th>
               <td mat-cell *matCellDef="let articulo"> 
                 <h4 *ngIf="articulo.estado==1">EN VENTA</h4>
                 <h4 *ngIf="articulo.estado==2">DESCATALOGADO</h4> </td>
             </ng-container>
 
-            <ng-container matColumnDef="ACCIONES">
-              <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+            <ng-container matColumnDef="creador">
+              <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> CREADOR </th>
+              <td mat-cell *matCellDef="let articulo" class="text-center"> {{articulo.creador.nombreusuario}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> ACCIONES </th>
               <td mat-cell *matCellDef="let articulo">
                   <button type="button" class="btn btn-danger" (click)="openDialog(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
               </td>
@@ -99,36 +104,36 @@
           </table>
 
 
-          <table  *ngIf="estado==2" mat-table [dataSource]="dataSourceDesc" class="jumbotron" #tabla3>        
-              <ng-container matColumnDef="CÓDIGO">
+          <table  *ngIf="estado==2" mat-table [dataSource]="dataSourceDesc" class="jumbotron" #tabla3 matSort>        
+              <ng-container matColumnDef="codigoarticulo">
                 <th mat-header-cell *matHeaderCellDef class="text-center"> CÓDIGO </th>
                 <td mat-cell *matCellDef="let articulo"> {{articulo.codigoarticulo}} </td>
               </ng-container>
           
-              <ng-container matColumnDef="DESCRIPCIÓN">
-                <th mat-header-cell *matHeaderCellDef class="text-center"> DESCRIPCIÓN </th>
+              <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> DESCRIPCIÓN </th>
                 <td mat-cell *matCellDef="let articulo" class="text-center"> {{articulo.descripcion}} </td>
               </ng-container>
           
-              <ng-container matColumnDef="PRECIO">
-                <th mat-header-cell *matHeaderCellDef class="text-center"> PRECIO </th>
+              <ng-container matColumnDef="precio">
+                <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> PRECIO </th>
                 <td mat-cell *matCellDef="let articulo" class="text-center"> {{articulo.precio}} </td>
               </ng-container>
   
-              <ng-container matColumnDef="ESTADO">
-                <th mat-header-cell *matHeaderCellDef class="text-center"> ESTADO </th>
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> ESTADO </th>
                 <td mat-cell *matCellDef="let articulo"> 
                   <h4 *ngIf="articulo.estado==1" class="text-center">EN VENTA</h4>
                   <h4 *ngIf="articulo.estado==2" class="text-center">DESCATALOGADO</h4> </td>
               </ng-container>
   
-              <ng-container matColumnDef="CREADOR">
-                <th mat-header-cell *matHeaderCellDef class="text-center"> CREADOR </th>
+              <ng-container matColumnDef="creador">
+                <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> CREADOR </th>
                 <td mat-cell *matCellDef="let articulo" class="text-center"> {{articulo.creador.nombreusuario}} </td>
               </ng-container>
   
-              <ng-container matColumnDef="ACCIONES">
-                <th mat-header-cell *matHeaderCellDef class="text-center"> ACCIONES </th>
+              <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef class="text-center" > ACCIONES </th>
                 <td mat-cell *matCellDef="let articulo">
                     <button type="button" class="btn btn-danger" (click)="openDialog(articulo.codigoarticulo)">ELIMINAR <i class="fas fa-trash"></i></button>
                 </td>

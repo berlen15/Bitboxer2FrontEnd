@@ -102,5 +102,8 @@ import { MatSortModule  } from "@angular/material/sort";
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
+  exports: [
+    MatSortModule,
+  ]
 })
 export class AppModule { }

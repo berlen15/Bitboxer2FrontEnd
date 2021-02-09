@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Articulo } from 'src/app/model/ArticuloModel';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-all-products-admin',
@@ -15,10 +16,12 @@ export class AllProductsAdminComponent implements OnInit {
   articulos;
   articulos_venta;
   articulos_descatalogados;
+  articulo_busqueda;
   creador;
   estado;
+  codigo:any;
 
-  columnas: string[] = ['CÓDIGO', 'DESCRIPCIÓN', 'PRECIO', 'ESTADO', 'CREADOR', 'ACCIONES'];
+  columnas: string[] = ['codigoarticulo', 'descripcion', 'precio', 'estado', 'creador', 'acciones'];
   dataSource=null;
   dataSourceVenta=null;
   dataSourceDesc=null;
@@ -26,14 +29,21 @@ export class AllProductsAdminComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatPaginator, { static: true }) paginatorVenta: MatPaginator;
   @ViewChild(MatPaginator, { static: true }) paginatorDesc: MatPaginator;
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sortVenta: MatSort;
+  @ViewChild(MatSort) sortDesc: MatSort;
   constructor(private articleService:ArticlesService, public dialog: MatDialog) { }
 
   async ngOnInit(): Promise<void> {
-    this.estado=0;   
+    this.estado=0; 
     this.articulos = await this.articleService.getArticles(); 
 
     this.dataSource = new MatTableDataSource<Articulo>(this.articulos);
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort=this.sort;
+    
+
     this.articleService.filterArticles("Venta").subscribe(data=>{
       this.articulos_venta=data;
       this.dataSourceVenta = new MatTableDataSource<Articulo>(this.articulos_venta);
@@ -42,9 +52,8 @@ export class AllProductsAdminComponent implements OnInit {
     this.articleService.filterArticles("Descatalogado").subscribe(data=>{
       this.articulos_descatalogados=data;
       this.dataSourceDesc= new MatTableDataSource<Articulo>(this.articulos_descatalogados);
-      this.dataSourceDesc.paginator = this.paginatorDesc;
-      
-    })    
+      this.dataSourceDesc.paginator = this.paginatorDesc;      
+    });    
   }
 
   openDialog(codigoarticulo){    
@@ -55,7 +64,17 @@ export class AllProductsAdminComponent implements OnInit {
         alert("Se ha eliminado el artículo");
         window.location.reload();
       }
-    })
-  
+    })  
+  }
+  search(){
+    console.log("en search");
+    console.log("El tipo es ", typeof(this.codigo), "y es ", this.codigo);
+    this.articleService.getArticleByCode(this.codigo).subscribe(
+      data => {
+        this.articulo_busqueda=data;    
+        this.articulos=data;
+        console.log(this.articulo_busqueda)
+      }
+    )
   }
 }
