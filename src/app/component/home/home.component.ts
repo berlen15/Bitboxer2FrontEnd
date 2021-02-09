@@ -8,6 +8,8 @@ import { ArticlesService } from 'src/app/services/articles.service';
 import { Articulo } from 'src/app/model/ArticuloModel';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Usuario } from 'src/app/model/UsuarioModel';
+import { UsuarioNuevo } from 'src/app/model/newUserModel';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,9 +22,12 @@ export class HomeComponent implements OnInit {
   articulos;
   usuarios: Array<Object>;
   columnas: string[] = ['CÓDIGO', 'DESCRIPCIÓN', 'PRECIO'];
+  columnasUser: string[] = ['nombreusuario', 'nombre', 'apellidos'];
   dataSource=null;
+  dataSourceUsers=null;
 
   @ViewChild(MatPaginator) paginator1: MatPaginator;
+  @ViewChild(MatPaginator) paginator2: MatPaginator;
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {    
@@ -42,7 +47,14 @@ export class HomeComponent implements OnInit {
           this.articulos = JSON.parse(err.error).message;
         });
     }else if(this.usuario.rol.name=='ADMIN'){
-      this.userService.getAllUsers().subscribe(data=>this.usuarios=data);
+      this.userService.getAllUsers().subscribe(
+        data=>{
+          this.usuarios=data;
+          this.dataSourceUsers = new MatTableDataSource<any>(this.usuarios);
+          this.dataSource.paginator = this.paginator2;
+        }
+        
+        );
     }
     
   }
