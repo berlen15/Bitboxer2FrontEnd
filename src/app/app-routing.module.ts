@@ -20,7 +20,7 @@ import { AddSupplierComponent } from './component/add-supplier/add-supplier.comp
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard],data:      { imageUrl: '../assets/img/imagenfondo.jpg' }},
+  { path: 'home/:nombreusuario', component: HomeComponent, canActivate:[AuthGuard]},
   { path: 'products/admin', component: AllProductsAdminComponent},
   { path: 'products/:nombreusuario', component: ProductsComponent},
   { path: 'products/:nombreusuario/add', component: AddProductComponent},

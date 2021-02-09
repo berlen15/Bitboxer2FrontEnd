@@ -27,7 +27,8 @@ body {
   color: whitesmoke
 }
 .text-darkyellow {
-  color: rgba(148, 167, 203, 0.432)
+  color: rgba(148, 167, 203, 0.432);
+  font-size:10px;
 }
 
 /* Lines */
@@ -42,7 +43,7 @@ body {
   font-size:16px;
 }
 .form-button {
-  background-color:#3264C2;
+  background-color:#0051BA;
   border-color: #1C4797;
   color: #e6e6e6;
   font-size:16px;
@@ -55,7 +56,7 @@ body {
 .form-button:active:hover,
 .form-button.active:hover,
 .form-button.active:focus {
-  background-color: yellow;
+  background-color:#FFBE33;
   border-color: rgba(255, 235, 59, 0.473);
   color: #3264C2;
 }
@@ -146,9 +147,9 @@ body {
 }
 .form-control:focus,
 .border-line:focus {
-  border-color:yellow;
+  border-color:#FFBE33;
   background-color: #77A3F6;
-  color: #e6e6e6;
+  color: white;
 }
 .form-control,
 .form-control:focus {
@@ -160,6 +161,7 @@ body {
 
 input[type="text"], input[type="password"]{
   font-size: 20px;
+  color:white;
 }
 .container-content {
   background-color:transparent;

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +23,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateProductComponent } from './component/update-product/update-product.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
 import { AsociateSupplierComponent } from './component/asociate-supplier/asociate-supplier.component';
 import { AddReductionComponent } from './component/add-reduction/add-reduction.component';
@@ -43,6 +42,10 @@ import { AllProductsAdminComponent } from './component/all-products-admin/all-pr
 import { DeleteArticleDialogComponent } from './component/delete-article-dialog/delete-article-dialog.component';
 import { DisableArticleDialogComponent } from './component/disable-article-dialog/disable-article-dialog.component';
 import { AddSupplierComponent } from './component/add-supplier/add-supplier.component';
+
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatProgressSpinnerModule,  } from "@angular/material/progress-spinner";
+import { MatSortModule  } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -72,7 +75,10 @@ import { AddSupplierComponent } from './component/add-supplier/add-supplier.comp
   imports: [
     BrowserModule,
     FormsModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
     MatDialogModule,
     MatGridListModule,
     MatTabsModule,
