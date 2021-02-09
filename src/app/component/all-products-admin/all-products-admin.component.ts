@@ -19,7 +19,6 @@ export class AllProductsAdminComponent implements OnInit {
   estado;
 
   columnas: string[] = ['CÓDIGO', 'DESCRIPCIÓN', 'PRECIO', 'ESTADO', 'CREADOR', 'ACCIONES'];
-  datos: Articulo[]=[];
   dataSource=null;
   dataSourceVenta=null;
   dataSourceDesc=null;

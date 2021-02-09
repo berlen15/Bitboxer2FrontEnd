@@ -18,4 +18,8 @@
   }
   table{
       font-size:16px;
+      width: 100%;
+  }
+  mat-header-cell{
+    margin-left: 5px;
   }
