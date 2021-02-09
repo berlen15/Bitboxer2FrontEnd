@@ -4,32 +4,49 @@
     <button type="button" class="btn btn-success text-right"><a routerLink="/users/add">Añadir usuario</a></button>
     <div class="container">
       <div class="col-12 table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">NOMBRE USUARIO</th>
-              <th scope="col">ROL</th>
-              <th scope="col">NOMBRE</th>
-              <th scope="col">APELLIDOS</th>
-              <th scope="col">CIUDAD</th>
-              <th scope="col">TELEFONO</th>             
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let usuario of usuarios">
-              <th scope="row">{{usuario.nombreusuario}}</th>
-              <td>{{usuario.rol.name}}</td>
-              <td>{{usuario.nombre}}</td>
-              <td>{{usuario.apellidos}}</td>
-              <td>{{usuario.ciudad}}</td>
-              <td>{{usuario.telefono}}</td>
-              <td>
-                <button type="button" class="btn btn-danger" (click)="openDialog(usuario.nombreusuario)">ELIMINAR <i class="fas fa-user-minus"></i></button>
-                <button type="button" class="btn btn-warning" (click)="editUser(usuario.nombreusuario)">EDITAR <i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-          </tbody>
+        <table mat-table [dataSource]="dataSource" class="jumbotron" matSort>        
+          <ng-container matColumnDef="nombreusuario">
+            <th mat-header-cell *matHeaderCellDef class="text-right" mat-sort-header> NOMBRE USUARIO </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.nombreusuario}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="rol">
+            <th mat-header-cell *matHeaderCellDef class="text-right" mat-sort-header> ROL </th>
+            <td mat-cell *matCellDef="let usuario" class="text-center"> {{usuario.rol.name}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> NOMBRE </th>
+            <td mat-cell *matCellDef="let usuario" class="text-center"> {{usuario.nombre}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> APELLIDOS </th>
+            <td mat-cell *matCellDef="let usuario" class="text-center">{{usuario.apellidos}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ciudad">
+            <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> CIUDAD </th>
+            <td mat-cell *matCellDef="let usuario" class="text-center"> {{usuario.ciudad}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef class="text-center" mat-sort-header> TELEFONO </th>
+            <td mat-cell *matCellDef="let usuario" class="text-center"> {{usuario.telefono}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef class="text-center"> ACCIONES </th>
+            <td mat-cell *matCellDef="let usuario" > 
+              <button type="button" class="btn btn-danger" (click)="openDialog(usuario.nombreusuario)">ELIMINAR <i class="fas fa-user-minus"></i></button>
+              <button type="button" class="btn btn-warning" (click)="editUser(usuario.nombreusuario)">EDITAR <i class="fas fa-edit"></i></button>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
         </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons class="jumbotron"></mat-paginator>
       </div>
     </div>
   </div>
