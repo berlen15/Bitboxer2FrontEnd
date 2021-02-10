@@ -31,8 +31,13 @@ export class AddSupplierComponent implements OnInit {
       nombre: this.nombre,
       pais: this.pais
     };
-    this.suplierService.addSuplier(proveedor);
-    this.router.navigate(["/supliers"])
+    if(this.nombre!=null){
+      this.suplierService.addSuplier(proveedor);
+      this.router.navigate(["/supliers"])
+    }else{
+      this.emptySupplier=true;
+    }
+    
   }
 
   validateSuplier(){

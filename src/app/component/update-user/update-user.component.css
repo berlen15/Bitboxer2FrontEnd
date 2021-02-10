@@ -1,3 +1,7 @@
 .btn{
     font-size:16px;
 }
+.error-msg p{
+    color:red;
+    font-size:10px;
+}

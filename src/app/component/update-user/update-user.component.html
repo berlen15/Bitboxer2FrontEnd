@@ -10,18 +10,20 @@
             <label for="Nombre"><b>* Nombre de usuario</b></label>
             <input type="text" class="form-control" placeholder="{{nombreusuario}}" name="nombreusuario" id="nombreusuario" value="" disabled>
             <label for="Nombre"><b>* Contraseña</b></label>
-            <input type="password" class="form-control" placeholder="{{contrasena}}" [(ngModel)]="contrasena" name="contrasena" id="contrasena" value="" required>
+            <input type="password" class="form-control" placeholder="{{contrasena}}" [(ngModel)]="contrasena" name="contrasena" id="contrasena" value="" required (keyup)="validatePass()">
+            <div class="error-msg" *ngIf="emptyPass==true"><p>La contraseña no puede quedar vacía</p></div>
             </div>
             <div class="form-group col-md-6">
                 <label for="Tipo"><b>* Rol</b></label>
                 <br>
                 <mat-form-field appearance="fill">
                     <mat-label>* Rol</mat-label>
-                    <mat-select [(ngModel)]="rol" name="rol">
+                    <mat-select [(ngModel)]="rol" name="rol" (selectionChange)="validateRol()">
                         <mat-option [value]="1">ADMINISTRADOR</mat-option>
                         <mat-option [value]="2">USUARIO</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <div class="error-msg" *ngIf="emptyRol==true"><p>El rol no puede quedar vacío</p></div>
             </div>
           </div>
           <div class="form-group">

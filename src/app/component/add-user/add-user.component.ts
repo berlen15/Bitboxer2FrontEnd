@@ -11,6 +11,8 @@ import { UsuarioNuevo } from 'src/app/model/newUserModel';
 export class AddUserComponent implements OnInit {
   validUser:boolean;
   emptyUser:boolean;
+  emptyPass:boolean;
+  emptyRol:boolean;
   nombreusuario:string;
   contrasena:string;
   ciudad:string;
@@ -38,29 +40,47 @@ export class AddUserComponent implements OnInit {
           this.validUser=true;
         }
       })
+    }   
+  }
+
+  validatePass(){
+    if(this.contrasena==null || this.contrasena==""){
+      this.emptyPass=true;
+    }else{
+      this.emptyPass=false;      
     }
-    
+  }
+  validateRol(){
+    if(this.rol==null || this.rol=="" ){
+      this.emptyRol=true;
+    }else{
+      this.emptyRol=false;      
+    }
   }
   saveUser(){
-    if(this.validUser==false || this.emptyUser==true){
-      return;
-    }
-    if(this.rol==1){
-      this.rol_string='ADMIN';
+    if(this.nombreusuario!=null && this.contrasena!=null && this.rol!=null){
+      if(this.rol==1){
+        this.rol_string='ADMIN';
+      }else{
+        this.rol_string='USER';
+      }
+      var usuario: UsuarioNuevo = {
+        nombreusuario: this.nombreusuario,
+        contraseña: this.contrasena,
+        nombre: this.nombre,
+        apellidos: this.apellidos,
+        ciudad: this.ciudad,
+        telefono: this.telefono,
+        rol: this.rol_string
+      }
+      if(this.validUser==true){
+        this.userService.addUser(usuario);
+        this.router.navigate(["/users"]);
+      }      
     }else{
-      this.rol_string='USER';
-    }
-    var usuario: UsuarioNuevo = {
-      nombreusuario: this.nombreusuario,
-      contraseña: this.contrasena,
-      nombre: this.nombre,
-      apellidos: this.apellidos,
-      ciudad: this.ciudad,
-      telefono: this.telefono,
-      rol: this.rol_string
-    }
-
-    this.userService.addUser(usuario);
-    this.router.navigate(["/users"]);
+      this.validateUser();
+      this.validatePass();
+      this.validateRol();
+    }    
   }
 }
