@@ -18,9 +18,6 @@
             <mat-form-field appearance="fill">
                 <mat-label>* Estado</mat-label>
                 <mat-select [(ngModel)]="estado" name="estado">
-                    <!--<mat-option *ngFor="let e of estados_disponibles" [value]="e.estado_number" [(value)]="estado">
-                    {{e.estado_string}}
-                    </mat-option>-->
                     <mat-option [value]="1">EN VENTA</mat-option>
                     <mat-option [value]="2">DESCATALOGADO</mat-option>
                 </mat-select>
@@ -30,7 +27,8 @@
           <div class="form-group">
             <label for="Descripcion"><b>* Descripción</b></label>
                         <textarea [(ngModel)]="descripcion" class="form-control" id="descripcion" name="descripcion" rows="10" 
-                            cols="40" required>{{descripcion}}</textarea>
+                            cols="40" required (keyUp)="validateDesc()">{{descripcion}}</textarea>
+            <div class="error-msg" *ngIf="emptyDesc==true"><p>La descripción del artículo no puede quedar vacía</p></div>
           </div>
           <div class="form-group">
             <label for="Precio"><b>* Precio</b></label>

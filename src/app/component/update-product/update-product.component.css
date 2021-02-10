@@ -4,12 +4,9 @@ mat-select{
 input[type="number"]{
     height: 38px;
 }
-.error-msg{
-    margin-top:20px;
-    border-radius: 25px;
-    background-color:red;
-    font-size: 15px;
-    color:white;
+.error-msg p{
+    color:red;
+    font-size:10px;
 }
 .btn{
     margin-left:5px;

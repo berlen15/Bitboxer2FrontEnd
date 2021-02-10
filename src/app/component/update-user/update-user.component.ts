@@ -28,7 +28,6 @@ export class UpdateUserComponent implements OnInit {
     this.userService.getUserByAdmin(this.nombreusuario).subscribe(data=>{   
       
     this.usuario=data;
-    console.log("queeeee ", this.usuario)  
     this.contrasena=this.usuario.contraseña;
     this.nombre=this.usuario.nombre;
     this.apellidos = this.usuario.apellidos;

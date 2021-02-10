@@ -15,37 +15,69 @@ export class AddProductComponent implements OnInit {
   precio;
 
   validCode;
+  emptyCode;
+  emptyDesc;
+
   constructor(private articleService: ArticlesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.validateCode();
+    this.emptyCode=false;
+    this.emptyDesc=false;
   }
   saveArticle(){
-    var creador : Usuario = {
-      idusuario: +sessionStorage.getItem("idusuario")
+    if(this.validCode && this.emptyCode==false && this.emptyDesc==false){
+      var creador : Usuario = {
+        idusuario: +sessionStorage.getItem("idusuario")
+      }
+      var articulo: Articulo = {
+        codigoarticulo: Number(this.codigoarticulo),
+        descripcion: this.descripcion,
+        precio: this.precio,
+        estado: 1,
+        creador: creador
+      };
+        this.articleService.addArticle(articulo);
+        this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
+      
+    }else{
+      this.validateCode();
+      this.validateDesc();
+      this.validateEmptyCode();
     }
-    var articulo: Articulo = {
-      codigoarticulo: Number(this.codigoarticulo),
-      descripcion: this.descripcion,
-      precio: this.precio,
-      estado: 1,
-      creador: creador
-    };
-    this.articleService.addArticle(articulo);
-    this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
+    
   }
 
   validateCode(){
-    console.log("dentro del validcodde");
-    console.log(this.validCode);
     this.articleService.getArticleByCode(this.codigoarticulo).subscribe(data=>{
       if(data!=null){
         this.validCode=false;
+        return;
+      }
+      if(this.codigoarticulo!=null){
+        this.emptyCode=false;
       }
     });
-    if(this.codigoarticulo==null){
-        this.validCode=false;
-    }
+    
     this.validCode=true;
+    
   }
+
+  validateEmptyCode(){
+    if(this.codigoarticulo==null){
+      this.emptyCode=true;
+      return;
+    }else{
+      this.emptyCode=false;
+    }
+  }
+
+  validateDesc(){
+    if(this.descripcion==null){
+      this.emptyDesc=true;
+      return;
+    }else{
+      this.emptyDesc=false;
+    }
+  }
+  
 }

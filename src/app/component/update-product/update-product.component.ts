@@ -25,6 +25,9 @@ export class UpdateProductComponent implements OnInit {
   codigoarticulo;
   articulo;
   valid;
+
+  emptyDesc:boolean;
+
   constructor(private articleService: ArticlesService, private activatedRoute: ActivatedRoute, private router: Router,public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -36,15 +39,15 @@ export class UpdateProductComponent implements OnInit {
         this.descripcion=this.articulo.descripcion;
         this.precio=this.articulo.precio;
         if(this.articulo.estado==1){
-          this.estado="EN VENTA";
+          this.estado=1;
         }else if(this.articulo.estado==2){
-          this.estado="DESCATALOGADO";
-        }
-               
+          this.estado=2;
+        }               
       })
      
   }
   updateArticle(){
+    
     if(this.estado==2){
       this.dialog.open(DisableArticleDialogComponent, { data: `Introduzca el motivo por el que descataloga el artículo`})
       .afterClosed().subscribe((confirmado:Boolean)=>{
@@ -68,26 +71,36 @@ export class UpdateProductComponent implements OnInit {
           this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
         }
       })     
+    }else{ 
+      this.validateDesc();   
+      if(this.emptyDesc==false){
+        var creador : Usuario = {
+          idusuario: +sessionStorage.getItem("idusuario")
+        }
+        var articulo: Articulo = {
+          codigoarticulo: Number(this.codigoarticulo),
+          descripcion: this.descripcion,
+          precio: this.precio,
+          estado: Number(this.estado),
+          creador: creador
+        };
+        console.log("nombreusuario ",sessionStorage.getItem("nombreusuario"));
+        this.articleService.updateArticle(this.codigoarticulo, sessionStorage.getItem("nombreusuario"), articulo);
+        this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
+      }else{
+        return;
+      }
+      
+    }    
+  }
+
+  validateDesc(){
+    console.log("es ",this.precio);
+    if(this.descripcion==""){
+      this.emptyDesc=true;
     }else{
-      if(this.descripcion=="" || this.precio==null|| this.estado==""){
-        this.valid=false;
-      }
-      console.log("estado es ", this.estado);
-      var creador : Usuario = {
-        idusuario: +sessionStorage.getItem("idusuario")
-      }
-      var articulo: Articulo = {
-        codigoarticulo: Number(this.codigoarticulo),
-        descripcion: this.descripcion,
-        precio: this.precio,
-        estado: Number(this.estado),
-        creador: creador
-      };
-      console.log("nombreusuario ",sessionStorage.getItem("nombreusuario"));
-      this.articleService.updateArticle(this.codigoarticulo, sessionStorage.getItem("nombreusuario"), articulo);
-      this.router.navigate(["/products/"+sessionStorage.usuario.nombreusuario])
-    }
-    
+      this.emptyDesc=false;
+    }    
   }
 
   AsociateSupplier(){

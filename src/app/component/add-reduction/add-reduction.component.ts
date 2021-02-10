@@ -23,6 +23,7 @@ export class AddReductionComponent implements OnInit {
   reducciones;
   validReduction:boolean;
   today = new Date();
+  emptyQuantity:boolean;
   
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticlesService, private router: Router) { }
 
@@ -38,6 +39,7 @@ export class AddReductionComponent implements OnInit {
   }
   saveReduction(){
     if(this.cantidad==null){
+      this.emptyQuantity=true;
       return;
     }
     if(this.fin_datepicker.value<this.inicio_datepicker.value){
@@ -61,7 +63,6 @@ export class AddReductionComponent implements OnInit {
             this.validReduction=false;
             return false;
           }else{
-            console.log("la fecha de fin ya pasó")
             continue;
           }
       }
@@ -72,6 +73,13 @@ export class AddReductionComponent implements OnInit {
       this.router.navigateByUrl("products/"+sessionStorage.getItem("nombreusuario")+"/"+this.codigoarticulo+"/edit")
     }
     
+  }
+  validateQuantity(){
+    if(this.cantidad==null){
+      this.emptyQuantity=true;
+    }else{
+      this.emptyQuantity=false;
+    }
   }
 
 }

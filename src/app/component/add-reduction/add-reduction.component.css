@@ -1,8 +1,6 @@
-.error-msg{
-    padding:10px;
-    font-size:14px;
-    border-radius:25px;
-    color:white;
+.error-msg p{
+    color:red;
+    font-size:10px;
 }
 .btn{
     font-size:16px;

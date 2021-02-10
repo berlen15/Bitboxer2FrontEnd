@@ -32,6 +32,7 @@
             <div class="form-group col-md-4 mt-5">
                 <label for="Precio"><b>* Cantidad (%)</b></label>
                 <input type="number" [(ngModel)]="cantidad" class="form-control" name="cantidad" id="cantidad" placeholder="EJ: 50" min="0" step="any" required>
+                <div class="error-msg" *ngIf="emptyQuantity==true"><p>El porcentaje de descuento no puede quedar vacío</p></div>
               </div>
             
           </div>
@@ -58,9 +59,9 @@
               <div class="row d-flex justify-content-center">                  
                 <button type="submit" class="text-center" name="store-activity" class="btn btn-primary" (click)="saveReduction()">Guardar</button>
               </div>
-              <div class="error-msg mt-5 bg-danger text-center" *ngIf="validDate==false"><h4>La fecha de fin no puede ser inferior a la de inicio</h4></div>
-              <div *ngIf="validReduction==false" class="error-msg mt-5 bg-danger"><h4>No se puede añadir una reducción al artículo porque ya tiene una vigente.
-                  Una vez finalizada la reducción en curso, podrá asociar otra al artículo.</h4></div>
+              <div class="error-msg mt-5 text-center" *ngIf="validDate==false"><h4>La fecha de fin no puede ser inferior a la de inicio</h4></div>
+              <div *ngIf="validReduction==false" class="error-msg mt-5"><p>No se puede añadir una reducción al artículo porque ya tiene una vigente.
+                  Una vez finalizada la reducción en curso, podrá asociar otra al artículo.</p></div>
           </div>
         </form>
 
